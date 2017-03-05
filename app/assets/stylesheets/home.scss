@@ -1,0 +1,39 @@
+html, body {
+ width: 100%;
+ height: 100%;
+}
+html {
+ display: table;
+}
+body {
+ display: table-cell;
+ vertical-align: middle;
+ text-align: center;
+}
+
+.home-btn {
+  margin: 5px;
+}
+
+.home-description {
+  padding: 10px;
+}
+
+.home-intro {
+  // padding: 20px;
+  // background-color: rgba(135, 0, 0, 0.4);
+  color: #c4c4c4;
+  h1 {
+    border-bottom: #870000 5px solid;
+    width: 100%;
+  }
+}
+
+
+html {
+  background: url('weights.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
