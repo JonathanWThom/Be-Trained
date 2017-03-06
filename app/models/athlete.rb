@@ -5,4 +5,5 @@ class Athlete < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :coach
+  validates :first_name, :last_name, :presence => true
 end

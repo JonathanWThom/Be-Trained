@@ -17,5 +17,6 @@
     <!-- <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
     <%= yield %>
+    <li><%= link_to "Log Out", destroy_coach_session_path, method: :delete%></li>
   </body>
 </html>

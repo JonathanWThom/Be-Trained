@@ -1,12 +1,12 @@
 <h2>Your Athletes</h2>
 <% @athletes.each do |athlete| %>
-  <p><%= athlete.email %></p>
+  <p><%= athlete.first_name %> <%= athlete.last_name %></p>
   <!--pagination, links-->
 <% end %>
 <% if @unconfirmed.any? %>
   <h3>Unconfirmed Athletes</h3>
   <% @unconfirmed.each do |athlete| %>
-    <p><%= athlete.email %></p>
+    <p><%= athlete.first_name %> <%= athlete.last_name %></p>
     <%= link_to "Confirm", coach_athlete_path(@coach, athlete, :accept => true), :method => :patch, remote: true %>
     <%= link_to "Ignore", coach_athlete_path(@coach, athlete, :ignore => true), :method => :patch, remote: true %>
   <% end %>

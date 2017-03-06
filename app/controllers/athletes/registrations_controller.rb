@@ -9,10 +9,10 @@ private
   end
 
   def sign_up_params
-    params.require(:athlete).permit(:email, :password, :password_confirmation, :coach_id)
+    params.require(:athlete).permit(:email, :password, :password_confirmation, :coach_id, :first_name, :last_name)
   end
 
   def account_update_params
-    params.require(:athlete).permit(:email, :password, :password_confirmation, :current_password, :coach_id)
+    params.require(:athlete).permit(:email, :password, :password_confirmation, :current_password, :coach_id, :first_name, :last_name)
   end
 end
