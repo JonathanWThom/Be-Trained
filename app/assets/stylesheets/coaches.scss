@@ -26,6 +26,29 @@
   }
 }
 
+.header {
+	width: 100%;
+	float: left;
+	margin: 0 0 3em 0;
+	padding: 0;
+	list-style: none;
+  color: #b7b7b7;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+#nav li {
+	float: left;
+}
+#nav li a {
+	display: block;
+	padding: 8px 15px;
+	text-decoration: none;
+	font-weight: bold;
+}
+#nav li a:hover {
+	color: #c00;
+	background-color: #fff;
+}
+
 
 
 // html, body {
