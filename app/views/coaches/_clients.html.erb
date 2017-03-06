@@ -1,0 +1,14 @@
+<h1>Your Clients</h1>
+<% @athletes.each do |athlete| %>
+  <p><%= athlete.email %></p>
+  <!--pagination, links-->
+<% end %>
+<% @unconfirmed.each do |athlete| %>
+  <p><%= athlete.email %></p>
+  <%= link_to "Confirm", coach_athlete_path(@coach, athlete), :method => :patch, remote: true %>
+<% end %>
+<%= form_tag invite_path(@coach) do %>
+  <h3>Invite a client</h3>
+  <%= text_field_tag :email %>
+  <%= submit_tag 'Send Invite' %>
+<% end %>

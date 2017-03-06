@@ -3,12 +3,6 @@
   <li>another thing</li>
 </ul>
 
-<div id="clients">
-  <h1>Your Clients</h1>
-
-  <%= form_tag invite_path(@coach) do %>
-    <h3>Invite a client</h3>
-    <%= text_field_tag :email %>
-    <%= submit_tag 'Send Invite' %>
-  <% end %>
+<div class="container" id="clients">
+  <%= render 'clients' %>
 </div>

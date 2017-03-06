@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # get '/coaches/:coach_id/athletes/new', to: 'athletes/registrations#new'
   devise_scope :athlete do
     get '/athletes/sign_up/:coach_id', :to => 'athletes/registrations#new'
   end
