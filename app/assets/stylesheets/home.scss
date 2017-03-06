@@ -21,13 +21,19 @@ body {
 
 .home-intro {
   // padding: 20px;
-  // background-color: rgba(135, 0, 0, 0.4);
-  color: #c4c4c4;
+  color: #b7b7b7;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-bottom: 15px;
+  padding-top: 10px;
+  position: relative;
   h1 {
+    margin: 0px;
     border-bottom: #870000 5px solid;
-    width: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
   }
 }
+
 
 
 html {

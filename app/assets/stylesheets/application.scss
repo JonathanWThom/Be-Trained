@@ -13,9 +13,13 @@
  *= require_tree .
  *= require_self
  */
- @import "materialize/components/color";
- $primary-color: color("blue", "lighten-2") !default;
- $secondary-color: #870000;
- @import 'materialize';
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+$secondary-color: #870000;
+@import 'materialize';
+@import url('https://fonts.googleapis.com/css?family=Lato');
 
-// new font and colors
+
+body {
+  font-family: 'Lato', sans-serif;
+}
