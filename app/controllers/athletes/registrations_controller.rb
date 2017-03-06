@@ -2,16 +2,7 @@ class Athletes::RegistrationsController < Devise::RegistrationsController
     # before_filter :configure_sign_up_params, only: [:create]
 
 private
-  #
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.for(:sign_up) << :coach_id
-  # end
 
-  def new
-    super do
-      @coach = params[:coach_id]
-    end
-  end
 
   def after_sign_up_path_for(athlete)
     coach_athlete_path(athlete.coach, athlete)
