@@ -1,12 +1,21 @@
+// .coach-registration {
+//   text-align: center;
+//   color: #b7b7b7;
+//   background-color: rgba(0, 0, 0, 0.5);
+//   padding-bottom: 15px;
+//   padding-top: 10px;
+//   position: relative;
+//   margin-left: 25%;
+//   margin-right: 25%;
+// }
+
 .coach-registration {
+  background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
   color: #b7b7b7;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding-bottom: 15px;
-  padding-top: 10px;
-  position: relative;
-  margin-left: 25%;
-  margin-right: 25%;
+  height: auto;
+  width: 50vw;
+  padding-bottom: 20px;
   .field {
     margin-left: 10%;
     margin-right: 10%;
