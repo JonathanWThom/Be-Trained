@@ -3,7 +3,7 @@
     <h1>BeTrained</h1>
     <div id="border"></div>
     <h3 class="home-description">Share workouts, feedback, and instruction with your training clients. Give yourself more time to focus on what you do best: coaching.</h3>
-    <button class="btn home-btn">Register as a Coach</button>
+    <%= button_to "Register as a Coach", new_coach_registration_path, :class => "btn home-btn", :method => :get %>
     <button class="btn home-btn">Learn More</button>
   </div>
 </div>
