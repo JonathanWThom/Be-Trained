@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :athletes
-  devise_for :coaches, controllers: { registrations: "registrations" }
+  devise_for :athletes, :controllers => { registrations: 'athletes/registrations'}
+
+  devise_for :coaches, controllers: { registrations: "coaches/registrations" }
   root to: "home#index"
 
   resources :coaches, :only => [:show] do
