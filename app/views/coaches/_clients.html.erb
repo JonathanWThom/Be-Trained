@@ -1,11 +1,15 @@
-<h1>Your Clients</h1>
+<h2>Your Athletes</h2>
 <% @athletes.each do |athlete| %>
   <p><%= athlete.email %></p>
   <!--pagination, links-->
 <% end %>
-<% @unconfirmed.each do |athlete| %>
-  <p><%= athlete.email %></p>
-  <%= link_to "Confirm", coach_athlete_path(@coach, athlete), :method => :patch, remote: true %>
+<% if @unconfirmed.any? %>
+  <h3>Unconfirmed Athletes</h3>
+  <% @unconfirmed.each do |athlete| %>
+    <p><%= athlete.email %></p>
+    <%= link_to "Confirm", coach_athlete_path(@coach, athlete, :accept => true), :method => :patch, remote: true %>
+    <%= link_to "Ignore", coach_athlete_path(@coach, athlete, :ignore => true), :method => :patch, remote: true %>
+  <% end %>
 <% end %>
 <%= form_tag invite_path(@coach) do %>
   <h3>Invite a client</h3>

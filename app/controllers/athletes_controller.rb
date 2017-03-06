@@ -12,11 +12,19 @@ class AthletesController < ApplicationController
     @coach = Coach.find(params[:coach_id])
     @athletes = @coach.athletes.where(confirmed: true)
     @unconfirmed = @coach.athletes.where(confirmed: false)
-
-    if @athlete.update(confirmed: true)
-      respond_to do |format|
-        format.html { coach_path(@athlete.coach) }
-        format.js
+    if params[:accept] == "true"
+      if @athlete.update(confirmed: true)
+        respond_to do |format|
+          format.html { coach_path(@athlete.coach) }
+          format.js
+        end
+      end
+    elsif params[:ignore] == "true"
+      if @coach.athletes.delete(@athlete)
+        respond_to do |format|
+          format.html { coach_path(@athlete.coach) }
+          format.js
+        end
       end
     else
       redirect_to coach_path(@athlete.coach)

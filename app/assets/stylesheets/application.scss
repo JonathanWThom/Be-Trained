@@ -19,6 +19,21 @@ $secondary-color: #870000;
 @import 'materialize';
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
+#nav {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  border-bottom: #870000 5px solid;
+  text-align: center;
+  h2 {
+    margin: 0;
+    a {
+      color: #b7b7b7;
+    }
+    a:hover {
+      color: #870000
+    }
+  }
+}
 
 body {
   font-family: 'Lato', sans-serif;
