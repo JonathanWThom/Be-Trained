@@ -1,0 +1,48 @@
+/* line 1, /Users/JonathanThom/Desktop/be-trained/app/assets/stylesheets/home.scss */
+.home-intro {
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+/* line 16, /Users/JonathanThom/Desktop/be-trained/app/assets/stylesheets/home.scss */
+.home-btn {
+  margin: 5px;
+}
+
+/* line 20, /Users/JonathanThom/Desktop/be-trained/app/assets/stylesheets/home.scss */
+.home-description {
+  padding: 10px;
+}
+
+/* line 24, /Users/JonathanThom/Desktop/be-trained/app/assets/stylesheets/home.scss */
+.home-intro {
+  color: #b7b7b7;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-bottom: 15px;
+  padding-top: 10px;
+  position: relative;
+}
+/* line 30, /Users/JonathanThom/Desktop/be-trained/app/assets/stylesheets/home.scss */
+.home-intro h1 {
+  margin: 0px;
+  border-bottom: #870000 5px solid;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+/* line 39, /Users/JonathanThom/Desktop/be-trained/app/assets/stylesheets/home.scss */
+html {
+  background: url(/assets/weights-5f5d9f7ba8fbed10d14de62fd77e476b344fc9ee8938ea752a86401f0f80e0a1.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

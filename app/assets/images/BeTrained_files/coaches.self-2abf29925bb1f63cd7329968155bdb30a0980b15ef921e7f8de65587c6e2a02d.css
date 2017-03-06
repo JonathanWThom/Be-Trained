@@ -1,0 +1,68 @@
+/* line 1, /Users/JonathanThom/Desktop/be-trained/app/assets/stylesheets/coaches.scss */
+.coach-registration {
+  text-align: center;
+  color: #b7b7b7;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-bottom: 15px;
+  padding-top: 10px;
+  position: relative;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+/* line 10, /Users/JonathanThom/Desktop/be-trained/app/assets/stylesheets/coaches.scss */
+.coach-registration .field {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+/* line 16, /Users/JonathanThom/Desktop/be-trained/app/assets/stylesheets/coaches.scss */
+#clients {
+  color: #b7b7b7;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* line 21, /Users/JonathanThom/Desktop/be-trained/app/assets/stylesheets/coaches.scss */
+.header {
+  color: #b7b7b7;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/* line 24, /Users/JonathanThom/Desktop/be-trained/app/assets/stylesheets/coaches.scss */
+.header ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 29, /Users/JonathanThom/Desktop/be-trained/app/assets/stylesheets/coaches.scss */
+.header li {
+  display: inline;
+}
+
+/* line 34, /Users/JonathanThom/Desktop/be-trained/app/assets/stylesheets/coaches.scss */
+.header {
+  width: 100%;
+  float: left;
+  margin: 0 0 3em 0;
+  padding: 0;
+  list-style: none;
+  color: #b7b7b7;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* line 43, /Users/JonathanThom/Desktop/be-trained/app/assets/stylesheets/coaches.scss */
+#nav li {
+  float: left;
+}
+
+/* line 46, /Users/JonathanThom/Desktop/be-trained/app/assets/stylesheets/coaches.scss */
+#nav li a {
+  display: block;
+  padding: 8px 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* line 52, /Users/JonathanThom/Desktop/be-trained/app/assets/stylesheets/coaches.scss */
+#nav li a:hover {
+  color: #c00;
+  background-color: #fff;
+}
