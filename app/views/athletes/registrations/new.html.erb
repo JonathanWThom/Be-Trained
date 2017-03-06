@@ -8,10 +8,7 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :coach_id %><br />
-    <%= f.number_field :coach_id %>
-  </div>
+  <%= f.hidden_field :coach_id, :value => @coach.id %>
 
   <div class="field">
     <%= f.label :password %>

@@ -7,6 +7,12 @@ private
   #   devise_parameter_sanitizer.for(:sign_up) << :coach_id
   # end
 
+  def new
+    super do
+      @coach = params[:coach_id]
+    end
+  end
+
   def after_sign_up_path_for(athlete)
     coach_athlete_path(athlete.coach, athlete)
   end

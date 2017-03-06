@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :coaches, :only => [:show] do
-    resources :athletes
+    resources :athletes, :except => [:new]
   end
+
+  get 'coaches/:coach_id/athletes/sign_up/', to: 'athletes/registrations#new'
 
   post 'coaches/:id/invite', to: 'athletes#invite', as: :invite
 end

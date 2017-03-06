@@ -4,7 +4,7 @@ class InviteMailer < ApplicationMailer
   def invite_email(coach, email)
     @coach = coach
     @email = email
-    @url  = "www.betrained.us/athletes/sign_up"
+    @url  = "www.betrained.us/coaches/#{@coach.id}/athletes/sign_up/"
     mail(to: @email, subject: 'You Coach has Invited You to BeTrained')
   end
 end
