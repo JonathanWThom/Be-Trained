@@ -53,6 +53,13 @@ class WorkoutsController < ApplicationController
     end
   end
 
+  def destroy
+    @athlete = Athlete.find(params[:athlete_id])
+    @workout = Workout.find(params[:id])
+    @workout.destroy
+    redirect_to coach_athlete_path(@athlete.coach, @athlete)
+  end
+
   private
 
   def workout_params

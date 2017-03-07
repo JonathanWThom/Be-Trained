@@ -3,6 +3,7 @@
 <p><%= simple_format(@workout.coach_notes) %>
 <% if current_coach %>
   <p><%= link_to 'Edit Workout', edit_athlete_workout_path(@athlete, @workout), remote: true %></p>
+  <p><%= link_to 'Delete Workout', athlete_workout_path(@athlete, @workout), :data => {:confirm => "Are you sure you want to delete this workout?", :method => "delete"} %></p>
 <% end %>
 <h4>Results</h4>
 <div id="workout-results">
