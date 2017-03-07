@@ -5,16 +5,42 @@
   height: auto;
   width: 50vw;
   padding-bottom: 20px;
+  margin-bottom: 20px;
   .field {
     margin-left: 10%;
     margin-right: 10%;
+  }
+  h2 {
+    border-bottom: #870000 5px solid;
+    margin-left: 25%;
+    margin-right: 25%;
   }
 }
 
 .clients {
   color: #b7b7b7;
   background-color: rgba(0, 0, 0, 0.5);
+  padding-bottom: 20px;
+  width: 50vw;
   h2 {
     text-align: center;
+    border-bottom: #870000 5px solid;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+  h5 {
+    text-align: center;
+    a {
+      color: #b7b7b7;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: #870000;
+      text-decoration: underline;
+    }
+  }
+  .field {
+    margin-left: 10%;
+    margin-right: 10%;
   }
 }

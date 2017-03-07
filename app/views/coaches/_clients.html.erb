@@ -1,20 +1,27 @@
-<div class="clients">
+<div class="coach-registration">
   <h2>Your Athletes</h2>
-  <% @athletes.each do |athlete| %>
-  <p><%= link_to "#{athlete.first_name} #{athlete.last_name}", coach_athlete_path(@coach, athlete) %></p>
-  <!--pagination, links-->
-  <% end %>
+    <% @athletes.each do |athlete| %>
+      <h5><%= link_to "#{athlete.first_name} #{athlete.last_name}", coach_athlete_path(@coach, athlete) %></h5>
+      <!--pagination, links-->
+    <% end %>
   <% if @unconfirmed.any? %>
-  <h3>Unconfirmed Athletes</h3>
-  <% @unconfirmed.each do |athlete| %>
-  <p><%= athlete.first_name %> <%= athlete.last_name %></p>
-  <%= link_to "Confirm", coach_athlete_path(@coach, athlete, :accept => true), :method => :patch, remote: true %>
-  <%= link_to "Ignore", coach_athlete_path(@coach, athlete, :ignore => true), :method => :patch, remote: true %>
+    <h3>Unconfirmed Athletes</h3>
+    <% @unconfirmed.each do |athlete| %>
+      <p><%= athlete.first_name %> <%= athlete.last_name %></p>
+      <%= link_to "Confirm", coach_athlete_path(@coach, athlete, :accept => true), :method => :patch, remote: true %>
+      <%= link_to "Ignore", coach_athlete_path(@coach, athlete, :ignore => true), :method => :patch, remote: true %>
+    <% end %>
   <% end %>
-  <% end %>
-  <%= form_tag invite_path(@coach) do %>
-  <h3>Invite a client</h3>
-  <%= text_field_tag :email %>
-  <%= submit_tag 'Send Invite' %>
-  <% end %>
+
+</div>
+
+<div class="coach-registration">
+  <div class="field">
+    <h2>Invite an Athlete</h2>
+    <%= form_tag invite_path(@coach) do %>
+    <%= label_tag :email %>
+    <%= email_field_tag :email %>
+    <%= submit_tag 'Send Invite', class: 'btn home-btn' %>
+    <% end %>
+  </div>
 </div>
