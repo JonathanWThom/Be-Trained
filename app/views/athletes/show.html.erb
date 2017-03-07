@@ -6,11 +6,23 @@
     <h5>Yesterday</h5> <!-- buttons -->
     <h5>Tomorrow</h5> <!-- buttons -->
     <h5>All Workouts</h5> <!-- new route -->
+      <% @workouts.each do |workout| %>
+        <%= workout.date %>
+      <% end %>
   </div>
   <!-- show and hide this on click -->
   <% if current_coach && current_coach == @athlete.coach %>
     <div class="clients">
-      <!-- form -->
+      <h5>New Workout</h5>
+      <%= form_for [@athlete, @workout] do |f| %>
+        <%= f.label :date %>
+        <%= f.date_field :date %>
+        <%= f.label :workout %>
+        <%= f.text_area :workout, :class => 'big-field' %>
+        <%= f.label :coach_notes %>
+        <%= f.text_area :coach_notes, :class => 'medium-field' %>
+        <%= f.submit 'Create Workout' %>
+      <% end %>
     </div>
   <% end %>
 </div>
