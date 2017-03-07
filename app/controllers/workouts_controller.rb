@@ -44,10 +44,17 @@ class WorkoutsController < ApplicationController
   end
 
   def create
+
     @athlete = Athlete.find(params[:athlete_id])
-    @workout = @athlete.workouts.new(workout_params)
-    if @workout.save
-      redirect_to coach_athlete_path(@athlete.coach, @athlete)
+    @today_workout = @athlete.workouts.where(date: Date.today)
+    @workouts = @athlete.workouts
+    @workout = @athlete.workouts.new
+    @new_workout = @athlete.workouts.new(workout_params)
+    if @new_workout.save
+      respond_to do |format|
+        format.html { coach_athlete_path(@athlete.coach, @athlete) }
+        format.js
+      end
     else
       redirect_to coach_athlete_path(@athlete.coach, @athlete)
     end
