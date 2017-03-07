@@ -12,9 +12,9 @@
     <% if !current_page?(root_path)  %>
       <div id="nav">
         <ul>
-          <li><h2><%= link_to "BeTrained", root_path %></h2></li>
+          <li><h2 class="center-align"><%= link_to "BeTrained", root_path %></h2></li>
           <% if current_coach || current_athlete %>
-            <li><%= link_to "Log Out", destroy_coach_session_path, method: :delete, class: 'btn btn-home', id: 'logout' %></li>
+            <li class="right-align"><%= link_to "Log Out", destroy_coach_session_path, method: :delete, class: 'btn btn-home', id: 'logout' %></li>
           <% end %>
         </ul>
       </div>
