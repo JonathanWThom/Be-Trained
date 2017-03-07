@@ -1,22 +1,24 @@
 <div class="coach-registration">
   <h2>Your Athletes</h2>
-    <% @athletes.each do |athlete| %>
-      <h5><%= link_to "#{athlete.first_name} #{athlete.last_name}", coach_athlete_path(@coach, athlete) %></h5>
-      <!--pagination, links-->
-    <% end %>
+  <% @athletes.each do |athlete| %>
+  <h5><%= link_to "#{athlete.first_name} #{athlete.last_name}", coach_athlete_path(@coach, athlete) %></h5>
+  <!--pagination, links-->
+  <% end %>
   <% if @unconfirmed.any? %>
-    <h2>Unconfirmed</h2>
-    <% @unconfirmed.each do |athlete| %>
-      <h5>
-        <%= athlete.first_name %> <%= athlete.last_name %>
-        <%= link_to image_tag("checkmark.png", class: 'confirmation'), coach_athlete_path(@coach, athlete, :accept => true), remote: true, :method => :patch %>
-        <%= link_to image_tag("red_x.png", class: 'confirmation'), coach_athlete_path(@coach, athlete, :ignore => true), remote: true, :method => :patch %>
-      </h5>
-    <% end %>
+  <h2>Unconfirmed</h2>
+  <% @unconfirmed.each do |athlete| %>
+  <h5>
+    <%= athlete.first_name %> <%= athlete.last_name %>
+    <%= link_to image_tag("checkmark.png", class: 'confirmation'), coach_athlete_path(@coach, athlete, :accept => true), remote: true, :method => :patch %>
+    <%= link_to image_tag("red_x.png", class: 'confirmation'), coach_athlete_path(@coach, athlete, :ignore => true), remote: true, :method => :patch %>
+  </h5>
+  <% end %>
   <% end %>
 </div>
 
-<div id="invite">
+
+
+<div class="coach-registration">
   <div class="field">
     <h2>Invite</h2>
     <%= form_tag invite_path(@coach) do %>
