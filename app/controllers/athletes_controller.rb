@@ -2,7 +2,6 @@ class AthletesController < ApplicationController
   def show
     @athlete = Athlete.find(params[:id])
     @today_workout = @athlete.workouts.where(date: Date.today)
-    ##this is an array
     @workout = @athlete.workouts.new
     @workouts = @athlete.workouts
     if current_coach == @athlete.coach || current_athlete == @athlete
