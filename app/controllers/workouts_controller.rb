@@ -19,7 +19,7 @@ class WorkoutsController < ApplicationController
     # @tomorrow = Workout.where(date: @workout.date.prev_day)[0]
     # @yesterday = Workout.where(date: @workout.date.next_day)[0]
 
-    if @workout.update(workout_params)
+    if @workout.update(results_params)
       redirect_to athlete_workout_path(@athlete, @workout)
     else
       redirect_to athlete_workout_path(@athlete, @workout)
