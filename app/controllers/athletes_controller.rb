@@ -1,4 +1,13 @@
 class AthletesController < ApplicationController
+  def show
+    @athlete = Athlete.find(params[:id])
+    if current_coach == @athlete.coach || current_athlete == @athlete
+    else
+      redirect_to new_athlete_session_path
+    end
+  end
+
+
   def invite
     @coach = Coach.find(params[:id])
     @email = params[:email]

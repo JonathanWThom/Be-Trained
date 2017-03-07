@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     resources :athletes
   end
 
+  resources :athletes, :only => [] do
+    resources :workouts
+  end
+
 
   post 'coaches/:id/invite', to: 'athletes#invite', as: :invite
 end

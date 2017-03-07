@@ -1,6 +1,6 @@
 <h2>Your Athletes</h2>
 <% @athletes.each do |athlete| %>
-  <p><%= athlete.first_name %> <%= athlete.last_name %></p>
+  <p><%= link_to "#{athlete.first_name} #{athlete.last_name}", coach_athlete_path(@coach, athlete) %></p>
   <!--pagination, links-->
 <% end %>
 <% if @unconfirmed.any? %>

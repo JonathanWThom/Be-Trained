@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="clients">
+    <h2><%= @athlete.first_name %> <%= @athlete.last_name %></h2>
+    <h3>Today's Workout</h3>
+    <!--today's workout-->
+    <h5>Yesterday</h5> <!-- buttons -->
+    <h5>Tomorrow</h5> <!-- buttons -->
+    <h5>All Workouts</h5> <!-- new route -->
+  </div>
+  <!-- show and hide this on click -->
+  <% if current_coach && current_coach == @athlete.coach %>
+    <div class="clients">
+      <!-- form -->
+    </div>
+  <% end %>
+</div>
