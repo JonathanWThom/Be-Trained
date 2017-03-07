@@ -5,7 +5,6 @@ class AthletesController < ApplicationController
     ##this is an array
     @workout = @athlete.workouts.new
     @workouts = @athlete.workouts
-    binding.pry
     if current_coach == @athlete.coach || current_athlete == @athlete
     else
       redirect_to new_athlete_session_path
