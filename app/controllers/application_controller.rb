@@ -4,4 +4,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(coach)
     coach_path(current_coach)
   end
+
+  def after_sign_in_path_for(athlete)
+    coach_athlete_path(athlete.coach, athlete)
+  end
 end

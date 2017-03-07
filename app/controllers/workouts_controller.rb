@@ -13,6 +13,19 @@ class WorkoutsController < ApplicationController
     ## will next break if there are multiple workouts on a day?
   end
 
+  def update
+    @athlete = Athlete.find(params[:athlete_id])
+    @workout = Workout.find(params[:id])
+    # @tomorrow = Workout.where(date: @workout.date.prev_day)[0]
+    # @yesterday = Workout.where(date: @workout.date.next_day)[0]
+
+    if @workout.update(workout_params)
+      redirect_to athlete_workout_path(@athlete, @workout)
+    else
+      redirect_to athlete_workout_path(@athlete, @workout)
+    end
+  end
+
   def create
     @athlete = Athlete.find(params[:athlete_id])
     @workout = @athlete.workouts.new(workout_params)
@@ -29,4 +42,7 @@ class WorkoutsController < ApplicationController
     params.require(:workout).permit(:date, :workout, :coach_notes)
   end
 
+  def results_params
+    params.require(:workout).permit(:results, :athlete_notes)
+  end
 end
