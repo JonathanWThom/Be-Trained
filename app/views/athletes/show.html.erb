@@ -2,12 +2,16 @@
   <div class="clients">
     <h2><%= @athlete.first_name %> <%= @athlete.last_name %></h2>
     <h3>Today's Workout</h3>
-    <!--today's workout-->
+      <% @today_workout.each do |workout| %>
+        <%= workout.try(:date).try(:strftime, ('%a %d %b %Y'))  %>
+        <%= simple_format(workout.workout) %>
+        <%= workout.coach_notes %>
+      <% end %>
     <h5>Yesterday</h5> <!-- buttons -->
     <h5>Tomorrow</h5> <!-- buttons -->
     <h5>All Workouts</h5> <!-- new route -->
       <% @workouts.each do |workout| %>
-        <%= workout.date %>
+        <%= workout.try(:date).try(:strftime, ('%a %d %b %Y'))  %>
       <% end %>
   </div>
   <!-- show and hide this on click -->
