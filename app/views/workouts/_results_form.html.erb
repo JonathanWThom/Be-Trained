@@ -1,9 +1,25 @@
 <% if current_athlete && current_athlete == @athlete %>
   <div class="client" >
     <%= form_for [@athlete, @workout], method: "patch", remote: true do |f| %>
+    <%= f.label :results %>
     <%= f.text_area :results %>
+    <%= f.label :athlete_notes %>
     <%= f.text_area :athlete_notes %>
     <%= f.submit 'Submit Results' %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if current_coach && current_coach == @athlete.coach %>
+  <div class="clients">
+    <%= form_for [@athlete, @workout], method: "patch", remote: true do |f| %>
+      <%= f.label :date %>
+      <%= f.date_field :date %>
+      <%= f.label :workout %>
+      <%= f.text_area :workout, :class => 'big-field' %>
+      <%= f.label :coach_notes %>
+      <%= f.text_area :coach_notes, :class => 'medium-field' %>
+      <%= f.submit 'Update Workout' %>
     <% end %>
   </div>
 <% end %>

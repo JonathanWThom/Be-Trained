@@ -7,7 +7,7 @@
       <h3>Today's Workout</h3>
     <% end %>
       <% @today_workout.each do |workout| %>
-        <%= link_to 'Workout Page', athlete_workout_path(@athlete, workout) %> 
+        <%= link_to 'Workout Page', athlete_workout_path(@athlete, workout) %>
         <%= workout.try(:date).try(:strftime, ('%a %d %b %Y'))  %>
         <%= simple_format(workout.workout) %>
         <%= workout.coach_notes %>
@@ -18,18 +18,8 @@
       <% end %>
   </div>
   <!-- show and hide this on click -->
-  <% if current_coach && current_coach == @athlete.coach %>
-    <div class="clients">
-      <h5>New Workout</h5>
-      <%= form_for [@athlete, @workout] do |f| %>
-        <%= f.label :date %>
-        <%= f.date_field :date %>
-        <%= f.label :workout %>
-        <%= f.text_area :workout, :class => 'big-field' %>
-        <%= f.label :coach_notes %>
-        <%= f.text_area :coach_notes, :class => 'medium-field' %>
-        <%= f.submit 'Create Workout' %>
-      <% end %>
-    </div>
-  <% end %>
+  <div id="workout-form">
+    <%= render 'workouts/workout_form' %>
+  </div>
+
 </div>

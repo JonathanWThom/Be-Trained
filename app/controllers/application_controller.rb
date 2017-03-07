@@ -1,11 +1,24 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  def after_sign_in_path_for(coach)
-    coach_path(current_coach)
-  end
+  # def after_sign_in_path_for(resource)
+  #   if resource == coach
+  #     coach_path(current_coach)
+  #   elsif resource == athlete
+  #     coach_athlete_path(athlete.coach, athlete)
+  #   end
+  # end
 
-  def after_sign_in_path_for(athlete)
-    coach_athlete_path(athlete.coach, athlete)
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) ||
+    if resource.is_a?(Coach)
+      coach_path(current_coach)
+    else
+      coach_athlete_path(current_athlete.coach, current_athlete)
+    end
   end
+  # def after_sign_in_path_for(athlete)
+  #   coach_athlete_path(athlete.coach, athlete)
+  # end
+
 end

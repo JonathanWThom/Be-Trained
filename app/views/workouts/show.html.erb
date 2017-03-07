@@ -1,19 +1,8 @@
 <div class="container">
   <div class="clients">
-    <p><%= @workout.try(:date).try(:strftime, ('%a %d %b %Y')) %>
-    <p><%= simple_format(@workout.workout) %><p>
-    <p><%= @workout.coach_notes %>
-    <h4>Results</h4>
-    <div id="workout-results">
-      <%= render 'workout_results' %>
+    <div id="workout-info">
+      <%= render 'workout_info' %>
     </div>
-
-    <% if @tomorrow %>
-      <p><%= link_to "Tomorrow", athlete_workout_path(@athlete, @tomorrow) %></p>
-    <% end %>
-    <% if @yesterday %>
-    <p><%= link_to "Yesterday", athlete_workout_path(@athlete, @yesterday) %></p>
-    <% end %>
   </div>
   <div id="results-edit-form"></div>
 

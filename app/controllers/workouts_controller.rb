@@ -33,7 +33,7 @@ class WorkoutsController < ApplicationController
     # @tomorrow = Workout.where(date: @workout.date.prev_day)[0]
     # @yesterday = Workout.where(date: @workout.date.next_day)[0]
 
-    if @workout.update(results_params)
+    if @workout.update(update_params)
       respond_to do |format|
         format.html { athlete_workout_path(@athlete, @workout) }
         format.js
@@ -59,7 +59,7 @@ class WorkoutsController < ApplicationController
     params.require(:workout).permit(:date, :workout, :coach_notes)
   end
 
-  def results_params
-    params.require(:workout).permit(:results, :athlete_notes)
+  def update_params
+    params.require(:workout).permit(:results, :athlete_notes, :date, :workout, :coach_notes)
   end
 end
