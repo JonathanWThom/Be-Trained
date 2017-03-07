@@ -5,19 +5,20 @@
       <!--pagination, links-->
     <% end %>
   <% if @unconfirmed.any? %>
-    <h3>Unconfirmed Athletes</h3>
+    <h2>Unconfirmed</h2>
     <% @unconfirmed.each do |athlete| %>
-      <p><%= athlete.first_name %> <%= athlete.last_name %></p>
-      <%= link_to "Confirm", coach_athlete_path(@coach, athlete, :accept => true), :method => :patch, remote: true %>
-      <%= link_to "Ignore", coach_athlete_path(@coach, athlete, :ignore => true), :method => :patch, remote: true %>
+      <h5>
+        <%= athlete.first_name %> <%= athlete.last_name %>
+        <%= link_to image_tag("checkmark.png", class: 'confirmation'), coach_athlete_path(@coach, athlete, :accept => true), remote: true, :method => :patch %>
+        <%= link_to image_tag("red_x.png", class: 'confirmation'), coach_athlete_path(@coach, athlete, :ignore => true), remote: true, :method => :patch %>
+      </h5>
     <% end %>
   <% end %>
-
 </div>
 
-<div class="coach-registration">
+<div id="invite">
   <div class="field">
-    <h2>Invite an Athlete</h2>
+    <h2>Invite</h2>
     <%= form_tag invite_path(@coach) do %>
     <%= label_tag :email %>
     <%= email_field_tag :email %>

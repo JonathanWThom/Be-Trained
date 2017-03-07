@@ -6,6 +6,7 @@
   width: 50vw;
   padding-bottom: 20px;
   margin-bottom: 20px;
+  position: absolute;
   .field {
     margin-left: 10%;
     margin-right: 10%;
@@ -42,5 +43,10 @@
   .field {
     margin-left: 10%;
     margin-right: 10%;
+    position: absolute;
   }
+}
+
+.confirmation {
+  width: 5%;
 }
