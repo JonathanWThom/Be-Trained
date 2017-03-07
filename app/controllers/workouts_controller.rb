@@ -1,4 +1,11 @@
 class WorkoutsController < ApplicationController
+  ## limit who can access
+
+  def show
+    @athlete = Athlete.find(params[:athlete_id])
+    @workout = Workout.find(params[:id])
+    ## will next break if there are multiple workouts on a day?
+  end
 
   def create
     @athlete = Athlete.find(params[:athlete_id])

@@ -1,14 +1,17 @@
 <div class="container">
   <div class="clients">
     <h2><%= @athlete.first_name %> <%= @athlete.last_name %></h2>
-    <h3>Today's Workout</h3>
+    <% if @today_workout.length > 1 %>
+      <h3>Today's Workouts</h3>
+    <% else @today_workout.length == 1 %>
+      <h3>Today's Workout</h3>
+    <% end %>
       <% @today_workout.each do |workout| %>
+        <%= link_to 'Workout Page', athlete_workout_path(@athlete, workout) %> 
         <%= workout.try(:date).try(:strftime, ('%a %d %b %Y'))  %>
         <%= simple_format(workout.workout) %>
         <%= workout.coach_notes %>
       <% end %>
-    <h5>Yesterday</h5> <!-- buttons -->
-    <h5>Tomorrow</h5> <!-- buttons -->
     <h5>All Workouts</h5> <!-- new route -->
       <% @workouts.each do |workout| %>
         <%= workout.try(:date).try(:strftime, ('%a %d %b %Y'))  %>
