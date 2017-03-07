@@ -1,6 +1,9 @@
 <p><%= @workout.try(:date).try(:strftime, ('%a %d %b %Y')) %></p>
 <p><%= simple_format(@workout.workout) %><p>
-<p><%= @workout.coach_notes %>
+<p><%= simple_format(@workout.coach_notes) %>
+<% if current_coach %>
+  <p><%= link_to 'Edit Workout', edit_athlete_workout_path(@athlete, @workout), remote: true %></p>
+<% end %>
 <h4>Results</h4>
 <div id="workout-results">
   <%= render 'workout_results' %>

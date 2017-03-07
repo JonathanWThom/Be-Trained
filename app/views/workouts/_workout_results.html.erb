@@ -1,6 +1,6 @@
-<% if @workout.results %>
+<% if @workout.results && current_athlete %>
   <%= @workout.results %>
   <%= link_to 'Edit Results', edit_athlete_workout_path(@athlete, @workout), remote: true %>
-<% else %>
+<% elsif current_athlete %>
   <%= link_to 'Add Results', edit_athlete_workout_path(@athlete, @workout), remote: true %>
 <% end %>
