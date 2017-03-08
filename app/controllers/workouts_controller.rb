@@ -33,10 +33,13 @@ class WorkoutsController < ApplicationController
 
   def update
     @athlete = Athlete.find(params[:athlete_id])
+    @workout = Workout.find(params[:id])
     if (current_coach && (current_coach != @athlete.coach)) || (current_athlete && (current_athlete != @athlete))
       redirect_to root_path
+    elsif @athlete.workouts.where(date: update_params[:date]).length > 0
+      flash[:notice] = "You may not add more than one workout for a day. Instead, edit the day's training to include multiple sessions."
+      redirect_to athlete_workout_path(@athlete, @workout)
     else
-      @workout = Workout.find(params[:id])
       @previous = Workout.where( "date < ?", @workout.date ).order( "date DESC" ).where(athlete_id: @athlete.id).first
       @next = Workout.where( "date > ?", @workout.date ).order( "date" ).where(athlete_id: @athlete.id).first
 
