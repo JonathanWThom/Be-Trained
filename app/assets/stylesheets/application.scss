@@ -19,6 +19,13 @@ $secondary-color: #870000;
 @import 'materialize';
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
+.notice {
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 24px;
+  width: 20%;
+  color: #870000;
+  margin-left: 20px;
+}
 #nav {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
