@@ -6,7 +6,7 @@ class AthletesController < ApplicationController
     if @athlete
       @today_workout = @athlete.workouts.where(date: Date.today)
       @workout = @athlete.workouts.new
-      @workouts = @athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
+      @workouts = @athlete.workouts.search(params[:search]).paginate(:page => params[:page], :per_page => 7).order(date: :desc)
       if (current_coach && (current_coach != @athlete.coach)) || (current_athlete && (current_athlete != @athlete))
         redirect_to new_athlete_session_path
       end
