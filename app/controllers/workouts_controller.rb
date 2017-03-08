@@ -1,71 +1,83 @@
 class WorkoutsController < ApplicationController
-  ## limit who can access
+  before_action :authenticate_coach!, :only => [:edit, :create, :destroy]
 
   def show
-    ##only show link if there is a next or previous
-    ##add redirect too
     @athlete = Athlete.find(params[:athlete_id])
-    @workout = Workout.find(params[:id])
-    @tomorrow = Workout.where(date: @workout.date.prev_day)[0]
-    @yesterday = Workout.where(date: @workout.date.next_day)[0]
-
-    ## ONLY ALLOW ONE WORKOUT PER DAY?
-    ## will next break if there are multiple workouts on a day?
+    if (current_coach && (!current_coach.athletes.includes?(@athlete))) || (current_athlete && (current_athlete != @athlete))
+      redirect_to root_path
+    else
+      @workout = Workout.find(params[:id])
+      @tomorrow = Workout.where(date: @workout.date.prev_day)[0]
+      @yesterday = Workout.where(date: @workout.date.next_day)[0]
+    end
   end
 
   def edit
     @athlete = Athlete.find(params[:athlete_id])
-    @workout = Workout.find(params[:id])
-    @workouts = @athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
-    @tomorrow = Workout.where(date: @workout.date.prev_day)[0]
-    @yesterday = Workout.where(date: @workout.date.next_day)[0]
+    if @athlete.coach != current_coach
+      redirect_to new_coach_session_path
+    else
+      @workout = Workout.find(params[:id])
+      @workouts = @athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
+      @tomorrow = Workout.where(date: @workout.date.prev_day)[0]
+      @yesterday = Workout.where(date: @workout.date.next_day)[0]
 
-    respond_to do |format|
-      format.html { athlete_workout_path(@athlete, @workout) }
-      format.js
+      respond_to do |format|
+        format.html { athlete_workout_path(@athlete, @workout) }
+        format.js
+      end
     end
   end
 
   def update
     @athlete = Athlete.find(params[:athlete_id])
-    @workout = Workout.find(params[:id])
-    @tomorrow = Workout.where(date: @workout.date.prev_day)[0]
-    @yesterday = Workout.where(date: @workout.date.next_day)[0]
-    # @tomorrow = Workout.where(date: @workout.date.prev_day)[0]
-    # @yesterday = Workout.where(date: @workout.date.next_day)[0]
-
-    if @workout.update(update_params)
-      respond_to do |format|
-        format.html { athlete_workout_path(@athlete, @workout) }
-        format.js
-      end
+    if (current_coach && (current_coach != @athlete.coach)) || (current_athlete && (current_athlete != @athlete))
+      redirect_to root_path
     else
-      redirect_to athlete_workout_path(@athlete, @workout)
+      @workout = Workout.find(params[:id])
+      @tomorrow = Workout.where(date: @workout.date.prev_day)[0]
+      @yesterday = Workout.where(date: @workout.date.next_day)[0]
+
+      if @workout.update(update_params)
+        respond_to do |format|
+          format.html { athlete_workout_path(@athlete, @workout) }
+          format.js
+        end
+      else
+        redirect_to athlete_workout_path(@athlete, @workout)
+      end
     end
   end
 
   def create
-
     @athlete = Athlete.find(params[:athlete_id])
-    @today_workout = @athlete.workouts.where(date: Date.today)
-    @workouts = @athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
-    @workout = @athlete.workouts.new
-    @new_workout = @athlete.workouts.new(workout_params)
-    if @new_workout.save
-      respond_to do |format|
-        format.html { coach_athlete_path(@athlete.coach, @athlete) }
-        format.js
-      end
+    if current_coach != @athlete.coach
+      redirect_to new_coach_session_path
     else
-      redirect_to coach_athlete_path(@athlete.coach, @athlete)
+      @today_workout = @athlete.workouts.where(date: Date.today)
+      @workouts = @athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
+      @workout = @athlete.workouts.new
+      @new_workout = @athlete.workouts.new(workout_params)
+      if @new_workout.save
+        respond_to do |format|
+          format.html { coach_athlete_path(@athlete.coach, @athlete) }
+          format.js
+        end
+      else
+        redirect_to coach_athlete_path(@athlete.coach, @athlete)
+      end
     end
   end
 
   def destroy
     @athlete = Athlete.find(params[:athlete_id])
-    @workout = Workout.find(params[:id])
-    @workout.destroy
-    redirect_to coach_athlete_path(@athlete.coach, @athlete)
+    if current_coach != @athlete.coach
+      redirect_to new_coach_session_path
+    else
+      @workout = Workout.find(params[:id])
+      @workout.destroy
+      redirect_to coach_athlete_path(@athlete.coach, @athlete)
+    end
   end
 
   private
