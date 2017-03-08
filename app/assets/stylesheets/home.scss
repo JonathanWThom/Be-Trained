@@ -13,11 +13,8 @@
 .home-intro {
   background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
-  color: #b7b7b7;
   height: auto;
   width: 75vw;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
 }
 
 .home-btn {
@@ -64,6 +61,6 @@ html {
   .home-intro {
     position: absolute;
     top: 10px;
-    width: 90vw;
+    width: 100vw;
   }
 }
