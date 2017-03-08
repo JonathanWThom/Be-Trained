@@ -11,10 +11,10 @@
 }
 
 .home-intro {
-    background-color: red;
-    text-align: center;
-    height: auto;
-    width: 75vw;
+  background-color: red;
+  text-align: center;
+  height: auto;
+  width: 75vw;
 }
 
 .home-btn {
@@ -52,10 +52,15 @@ html {
 }
 
 @media screen and (max-width: 1200px) {
-    .home-buttons-large {
-      display: none;
-    }
-    .home-buttons-small {
-      display: block;
-    }
+  .home-buttons-large {
+    display: none;
+  }
+  .home-buttons-small {
+    display: block;
+  }
+  .home-intro {
+    position: absolute;
+    top: 10px;
+    width: 90vw;
+  }
 }

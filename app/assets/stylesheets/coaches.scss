@@ -62,8 +62,10 @@
   width: 5%;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   .coach-registration {
     width: 90vw;
+    position: absolute;
+    top: 75px;
   }
 }
