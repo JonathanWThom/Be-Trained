@@ -60,7 +60,10 @@ class WorkoutsController < ApplicationController
       @workouts = @athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
       @workout = @athlete.workouts.new
       @new_workout = @athlete.workouts.new(workout_params)
-      if @new_workout.save
+      if @new_workout.date == @today_workout.first.date
+        flash[:notice] = "You may not add more than one workout for a day. Instead, edit the day's training to include multiple sessions."
+        redirect_to coach_athlete_path(@athlete.coach, @athlete)
+      elsif @new_workout.save
         respond_to do |format|
           format.html { coach_athlete_path(@athlete.coach, @athlete) }
           format.js
