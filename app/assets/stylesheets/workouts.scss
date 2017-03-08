@@ -1,0 +1,23 @@
+.bordered {
+  border-bottom: #870000 solid 5px;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.workout-nav {
+  position: relative;
+}
+
+.next {
+  width: 5%;
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+}
+
+.prev {
+  width: 5%;
+  position: absolute;
+  left: 0;
+  margin-left: 10px;
+}

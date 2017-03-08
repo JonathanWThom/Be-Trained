@@ -1,17 +1,21 @@
-<p><%= @workout.try(:date).try(:strftime, ('%a %d %b %Y')) %></p>
+<div class="workout-nav">
+  <% if @tomorrow %>
+    <%= link_to image_tag("prev-icon", class: 'prev'), athlete_workout_path(@athlete, @yesterday) %>
+  <% end %>
+  <% if @yesterday %>
+    <%= link_to image_tag("next-icon", class: 'next'), athlete_workout_path(@athlete, @tomorrow) %>
+  <% end %>
+  <h4 class="bordered"><%= @workout.try(:date).try(:strftime, ('%a %d %b %Y')) %></h4>
+</div>
+
 <p><%= simple_format(@workout.workout) %><p>
 <p><%= simple_format(@workout.coach_notes) %>
 <% if current_coach %>
   <p><%= link_to 'Edit Workout', edit_athlete_workout_path(@athlete, @workout), remote: true %></p>
   <p><%= link_to 'Delete Workout', athlete_workout_path(@athlete, @workout), :data => {:confirm => "Are you sure you want to delete this workout?", :method => "delete"} %></p>
 <% end %>
-<h4>Results</h4>
+
 <div id="workout-results">
+  <h4 class="bordered">Results</h4>
   <%= render 'workout_results' %>
 </div>
-<% if @tomorrow %>
-  <p><%= link_to "Tomorrow", athlete_workout_path(@athlete, @tomorrow) %></p>
-<% end %>
-<% if @yesterday %>
-  <p><%= link_to "Yesterday", athlete_workout_path(@athlete, @yesterday) %></p>
-<% end %>

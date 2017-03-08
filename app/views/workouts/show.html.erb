@@ -1,15 +1,9 @@
-<div class="container">
-  <div class="clients">
-    <h2><%= link_to "#{@athlete.first_name} #{@athlete.last_name}", coach_athlete_path(@athlete.coach, @athlete) %></h2>
-    <!-- style this -->
+<div class="coach-container">
+  <div class="coach-registration">
     <div id="workout-info">
       <%= render 'workout_info' %>
     </div>
+    <h5><%= link_to "Return to Profile", coach_athlete_path(@athlete.coach, @athlete) %></h5>
   </div>
   <div id="results-edit-form"></div>
-
-
-  <!--add results section for athletes-->
-  <!--add edit for coaches-->
-  <!--restrict access!!!-->
 </div>
