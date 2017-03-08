@@ -1,5 +1,7 @@
 <div class="container">
   <div class="clients">
+    <h2><%= link_to "#{@athlete.first_name} #{@athlete.last_name}", coach_athlete_path(@athlete.coach, @athlete) %></h2>
+    <!-- style this -->
     <div id="workout-info">
       <%= render 'workout_info' %>
     </div>
