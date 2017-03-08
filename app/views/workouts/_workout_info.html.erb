@@ -1,9 +1,9 @@
 <div class="workout-nav">
   <% if @previous %>
-    <%= link_to image_tag("prev-icon", class: 'prev'), athlete_workout_path(@athlete, @previous) %>
+    <%= link_to image_tag("prev-icon.png", class: 'prev'), athlete_workout_path(@athlete, @previous) %>
   <% end %>
   <% if @next %>
-    <%= link_to image_tag("next-icon", class: 'next'), athlete_workout_path(@athlete, @next) %>
+    <%= link_to image_tag("next-icon.png", class: 'next'), athlete_workout_path(@athlete, @next) %>
   <% end %>
   <h4 class="bordered"><%= @workout.try(:date).try(:strftime, ('%a %d %b %Y')) %></h4>
 </div>
