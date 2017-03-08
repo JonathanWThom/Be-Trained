@@ -15,3 +15,9 @@
 //= require turbolinks
 //= require_tree .
 //= require materialize-sprockets
+$(document).ready(function(){
+  $('body').on('click', '.pagination a', function(){
+    $.getScript(this.href);
+    return false;
+  })
+})
