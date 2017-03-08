@@ -69,5 +69,11 @@ body {
   .notice {
     display: none;
   }
+}
 
+@media screen and (max-width: 768px) {
+  #logout, .console {
+    position: relative;
+    top: 60px;
+  }
 }
