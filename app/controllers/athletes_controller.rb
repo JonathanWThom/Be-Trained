@@ -5,6 +5,7 @@ class AthletesController < ApplicationController
     @athlete = Athlete.find(params[:id])
     if @athlete
       @today_workout = @athlete.workouts.where(date: Date.today)
+      @link_filter = AutoHtml::Link.new(target: '_blank')
       @workout = @athlete.workouts.new
       @workouts = @athlete.workouts.search(params[:search]).paginate(:page => params[:page], :per_page => 7).order(date: :desc)
       if (current_coach && (current_coach != @athlete.coach)) || (current_athlete && (current_athlete != @athlete))
