@@ -3,4 +3,10 @@
   <%= simple_format(workout.workout) %>
   <h5>Coach's Notes</h5>
   <%= simple_format(workout.coach_notes) %>
+  <% if @today_workout[0].results %>
+    <h5>Results</h5>
+    <%= simple_format(@today_workout[0].results) %>
+    <h5>Athlete Notes</h5>
+    <%= simple_format(@today_workout[0].athlete_notes) %>
+  <% end %>
 <% end %>
