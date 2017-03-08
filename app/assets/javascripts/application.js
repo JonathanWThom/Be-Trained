@@ -17,7 +17,7 @@
 //= require materialize-sprockets
 $(document).ready(function(){
   $('body').on('click', '.pagination a', function(){
-    $.getScript(this.href);
+    $.getScript(this.getAttribute('href'));
     return false;
-  })
-})
+  });
+});
