@@ -1,4 +1,4 @@
-<h2>All Workouts</h2> <!-- new route -->
+<h2>All Workouts</h2>
 <% @workouts.each do |workout| %>
   <p><%= link_to workout.try(:date).try(:strftime, ('%a %d %b %Y')), athlete_workout_path(workout.athlete, workout) %></p>
 <% end %>

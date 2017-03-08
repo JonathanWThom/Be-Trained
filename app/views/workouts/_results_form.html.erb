@@ -1,17 +1,17 @@
 <% if current_athlete && current_athlete == @athlete %>
-  <div class="client" >
+  <div class="coach-registration" >
     <%= form_for [@athlete, @workout], method: "patch", remote: true do |f| %>
     <%= f.label :results %>
-    <%= f.text_area :results %>
+    <%= f.text_area :results, :class => 'big-field'%>
     <%= f.label :athlete_notes %>
-    <%= f.text_area :athlete_notes %>
+    <%= f.text_area :athlete_notes, :class => 'medium-field' %>
     <%= f.submit 'Submit Results', :class => 'btn home-btn' %>
     <% end %>
   </div>
 <% end %>
 
 <% if current_coach && current_coach == @athlete.coach %>
-  <div class="clients">
+  <div class="coach-registration">
     <%= form_for [@athlete, @workout], method: "patch", remote: true do |f| %>
       <%= f.label :date %>
       <%= f.date_field :date %>

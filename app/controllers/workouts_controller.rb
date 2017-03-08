@@ -1,8 +1,9 @@
 class WorkoutsController < ApplicationController
-  before_action :authenticate_coach!, :only => [:edit, :create, :destroy]
+  before_action :authenticate_coach!, :only => [:create, :destroy]
 
   def show
     @athlete = Athlete.find(params[:athlete_id])
+    ## helper method
     if (current_coach && (!current_coach.athletes.include?(@athlete))) || (current_athlete && (current_athlete != @athlete))
       redirect_to root_path
     else
@@ -15,8 +16,8 @@ class WorkoutsController < ApplicationController
 
   def edit
     @athlete = Athlete.find(params[:athlete_id])
-    if @athlete.coach != current_coach
-      redirect_to new_coach_session_path
+    if (current_coach && @athlete.coach != current_coach) || (current_athlete && @athlete != current_athlete)
+      redirect_to root_path
     else
       @workout = Workout.find(params[:id])
       @workouts = @athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
