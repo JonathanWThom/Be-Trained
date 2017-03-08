@@ -16,6 +16,7 @@ class WorkoutsController < ApplicationController
   def edit
     @athlete = Athlete.find(params[:athlete_id])
     @workout = Workout.find(params[:id])
+    @workouts = @athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
     @tomorrow = Workout.where(date: @workout.date.prev_day)[0]
     @yesterday = Workout.where(date: @workout.date.next_day)[0]
 

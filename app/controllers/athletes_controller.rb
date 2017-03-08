@@ -41,4 +41,13 @@ class AthletesController < ApplicationController
       redirect_to coach_path(@athlete.coach)
     end
   end
+
+  def destroy
+    @athlete = Athlete.find(params[:id])
+    if @athlete.destroy && current_coach
+      redirect_to coach_path(current_coach)
+    elsif @athlete.destroy && current_athlete
+      redirect_to root_path
+    end
+  end
 end
