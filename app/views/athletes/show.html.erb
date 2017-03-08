@@ -10,6 +10,17 @@
       <%= render 'workouts/all_workouts' %>
     </div>
   </div>
+
+  <div class="coach-registration coach-box">
+    <div class="field">
+      <%= form_tag coach_athlete_path(@athlete.coach, @athlete), :method => 'get', :id => 'search', remote: true do %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :term => nil, :class => 'btn home-btn' %>
+      </p>
+      <% end %>
+    </div>
+  </div>
   <!-- show and hide this on click -->
   <% if current_coach && (@athlete.coach == current_coach) %>
     <div id="workout-form">

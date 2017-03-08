@@ -20,4 +20,9 @@ $(document).ready(function(){
     $.getScript(this.getAttribute('href'));
     return false;
   });
+
+  $('#search').submit(function(){
+    $.get(this.action, $(this.serialize(), null, "script");
+    return false;
+  });
 });

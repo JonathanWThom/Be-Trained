@@ -3,10 +3,3 @@
   <p><%= link_to workout.try(:date).try(:strftime, ('%a %d %b %Y')), athlete_workout_path(workout.athlete, workout) %></p>
 <% end %>
 <%= will_paginate @workouts %>
-
-<%= form_tag coach_athlete_path(@athlete.coach, @athlete), :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :term => nil %>
-  </p>
-<% end %>
