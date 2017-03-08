@@ -1,11 +1,6 @@
-
 <% @today_workout.each do |workout| %>
   <h3><%= link_to 'Today', athlete_workout_path(@athlete, workout.id) %></h3>
   <%= simple_format(workout.workout) %>
   <h5>Coach's Notes</h5>
   <%= simple_format(workout.coach_notes) %>
 <% end %>
-<h5>All Workouts</h5> <!-- new route -->
-  <% @workouts.each do |workout| %>
-    <%= workout.try(:date).try(:strftime, ('%a %d %b %Y'))  %>
-  <% end %>

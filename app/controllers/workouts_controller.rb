@@ -47,7 +47,7 @@ class WorkoutsController < ApplicationController
 
     @athlete = Athlete.find(params[:athlete_id])
     @today_workout = @athlete.workouts.where(date: Date.today)
-    @workouts = @athlete.workouts
+    @workouts = @athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
     @workout = @athlete.workouts.new
     @new_workout = @athlete.workouts.new(workout_params)
     if @new_workout.save

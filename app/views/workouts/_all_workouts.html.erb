@@ -1,0 +1,5 @@
+<h2>All Workouts</h2> <!-- new route -->
+<% @workouts.each do |workout| %>
+  <p><%= workout.try(:date).try(:strftime, ('%a %d %b %Y'))  %></p>
+<% end %>
+<%= will_paginate @workouts %>
