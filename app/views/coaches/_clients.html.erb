@@ -1,4 +1,4 @@
-<div class="coach-registration">
+<div class="coach-registration coach-box">
   <h2>Your Athletes</h2>
   <% @athletes.each do |athlete| %>
   <h5><%= link_to "#{athlete.first_name} #{athlete.last_name}", coach_athlete_path(@coach, athlete) %></h5>
@@ -16,9 +16,7 @@
   <% end %>
 </div>
 
-
-
-<div class="coach-registration">
+<div class="coach-registration lower-box">
   <div class="field">
     <h2>Invite</h2>
     <%= form_tag invite_path(@coach) do %>

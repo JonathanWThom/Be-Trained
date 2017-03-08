@@ -64,3 +64,10 @@ $secondary-color: #870000;
 body {
   font-family: 'Lato', sans-serif;
 }
+
+@media screen and (max-width: 1200px) {
+  .notice {
+    display: none;
+  }
+
+}
