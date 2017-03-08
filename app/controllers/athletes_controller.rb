@@ -1,5 +1,5 @@
 class AthletesController < ApplicationController
-  before_action :authenticate_coach!, :only => [:invite]
+  before_action :authenticate_coach!, :only => [:invite, :update, :destroy]
 
   def show
     @athlete = Athlete.find(params[:id])
