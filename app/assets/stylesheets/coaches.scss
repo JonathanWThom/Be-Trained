@@ -61,3 +61,9 @@
 .confirmation {
   width: 5%;
 }
+
+@media screen and (max-width: 768px) {
+  .coach-registration {
+    width: 90vw;
+  }
+}
