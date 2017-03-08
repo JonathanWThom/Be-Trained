@@ -45,7 +45,6 @@ class WorkoutsController < ApplicationController
     else
       @previous = Workout.where( "date < ?", @workout.date ).order( "date DESC" ).where(athlete_id: @athlete.id).first
       @next = Workout.where( "date > ?", @workout.date ).order( "date" ).where(athlete_id: @athlete.id).first
-
       if @workout.update(update_params)
         respond_to do |format|
           format.html { athlete_workout_path(@athlete, @workout) }
