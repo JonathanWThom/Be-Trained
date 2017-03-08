@@ -1,5 +1,5 @@
 <% if current_athlete && current_athlete == @athlete %>
-  <div class="coach-registration" >
+  <div class="coach-registration coach-box" >
     <%= form_for [@athlete, @workout], method: "patch", remote: true do |f| %>
     <%= f.label :results %>
     <%= f.text_area :results, :class => 'big-field'%>
@@ -11,7 +11,7 @@
 <% end %>
 
 <% if current_coach && current_coach == @athlete.coach %>
-  <div class="coach-registration">
+  <div class="coach-registration coach-box">
     <%= form_for [@athlete, @workout], method: "patch", remote: true do |f| %>
       <%= f.label :date %>
       <%= f.date_field :date %>
