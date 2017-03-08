@@ -8,8 +8,8 @@
   <h4 class="bordered"><%= @workout.try(:date).try(:strftime, ('%a %d %b %Y')) %></h4>
 </div>
 
-<p><%= simple_format(@workout.workout) %><p>
-<p><%= simple_format(@workout.coach_notes) %>
+<p><%= simple_format(@link_filter.call(@workout.workout)) %></p>
+<p><%= simple_format(@link_filter.call(@workout.coach_notes)) %></p>
 <% if current_coach %>
   <p><%= link_to 'Edit Workout', edit_athlete_workout_path(@athlete, @workout), remote: true %></p>
   <p><%= link_to 'Delete Workout', athlete_workout_path(@athlete, @workout), :data => {:confirm => "Are you sure you want to delete this workout?", :method => "delete"} %></p>

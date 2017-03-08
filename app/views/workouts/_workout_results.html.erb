@@ -1,8 +1,8 @@
 <% if (@workout.results && current_athlete) || (@workout.results && current_coach) %>
   <h4 class="bordered">Results</h4>
-  <%= simple_format(@workout.results) %>
+  <%= simple_format(@link_filter.call(@workout.results)) %>
   <h4 class="bordered">Athlete Notes</h4>
-  <%= simple_format(@workout.athlete_notes) %>
+  <%= simple_format(@link_filter.call(@workout.athlete_notes)) %>
   <%= link_to 'Edit Results', edit_athlete_workout_path(@athlete, @workout), remote: true %>
 <% elsif current_athlete %>
   <%= link_to 'Add Results', edit_athlete_workout_path(@athlete, @workout), remote: true %>
