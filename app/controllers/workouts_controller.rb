@@ -9,8 +9,8 @@ class WorkoutsController < ApplicationController
     else
       @workout = Workout.find(params[:id])
       ## put this in model
-      @yesterday = Workout.where(date: @workout.date.prev_day).where(athlete_id: @athlete.id)[0]
-      @tomorrow = Workout.where(date: @workout.date.next_day).where(athlete_id: @athlete.id)[0]
+      @previous = Workout.where( "date < ?", @workout.date ).order( "date DESC" ).where(athlete_id: @athlete.id).first
+      @next = Workout.where( "date > ?", @workout.date ).order( "date" ).where(athlete_id: @athlete.id).first
     end
   end
 
@@ -21,8 +21,8 @@ class WorkoutsController < ApplicationController
     else
       @workout = Workout.find(params[:id])
       @workouts = @athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
-      @yesterday = Workout.where(date: @workout.date.prev_day).where(athlete_id: @athlete.id)[0]
-      @tomorrow = Workout.where(date: @workout.date.next_day).where(athlete_id: @athlete.id)[0]
+      @previous = Workout.where( "date < ?", @workout.date ).order( "date DESC" ).where(athlete_id: @athlete.id).first
+      @next = Workout.where( "date > ?", @workout.date ).order( "date" ).where(athlete_id: @athlete.id).first
 
       respond_to do |format|
         format.html { athlete_workout_path(@athlete, @workout) }
@@ -37,8 +37,8 @@ class WorkoutsController < ApplicationController
       redirect_to root_path
     else
       @workout = Workout.find(params[:id])
-      @yesterday = Workout.where(date: @workout.date.prev_day).where(athlete_id: @athlete.id)[0]
-      @tomorrow = Workout.where(date: @workout.date.next_day).where(athlete_id: @athlete.id)[0]
+      @previous = Workout.where( "date < ?", @workout.date ).order( "date DESC" ).where(athlete_id: @athlete.id).first
+      @next = Workout.where( "date > ?", @workout.date ).order( "date" ).where(athlete_id: @athlete.id).first
 
       if @workout.update(update_params)
         respond_to do |format|
