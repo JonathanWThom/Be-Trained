@@ -25,13 +25,16 @@
   padding: 10px;
 }
 
+.home-buttons-small {
+  display: none;
+}
+
 .home-intro {
   color: #b7b7b7;
   background-color: rgba(0, 0, 0, 0.5);
   padding-bottom: 15px;
   padding-top: 10px;
   text-align: center;
-
   h1 {
     margin: 0px;
     border-bottom: #870000 5px solid;
@@ -40,11 +43,19 @@
   }
 }
 
-
 html {
   background: image-url('weights.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+@media screen and (max-width: 1200px) {
+    .home-buttons-large {
+      display: none;
+    }
+    .home-buttons-small {
+      display: block;
+    }
 }
