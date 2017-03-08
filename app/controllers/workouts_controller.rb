@@ -3,12 +3,13 @@ class WorkoutsController < ApplicationController
 
   def show
     @athlete = Athlete.find(params[:athlete_id])
-    if (current_coach && (!current_coach.athletes.includes?(@athlete))) || (current_athlete && (current_athlete != @athlete))
+    if (current_coach && (!current_coach.athletes.include?(@athlete))) || (current_athlete && (current_athlete != @athlete))
       redirect_to root_path
     else
       @workout = Workout.find(params[:id])
-      @tomorrow = Workout.where(date: @workout.date.prev_day)[0]
-      @yesterday = Workout.where(date: @workout.date.next_day)[0]
+      ## put this in model
+      @yesterday = Workout.where(date: @workout.date.prev_day).where(athlete_id: @athlete.id)[0]
+      @tomorrow = Workout.where(date: @workout.date.next_day).where(athlete_id: @athlete.id)[0]
     end
   end
 
@@ -19,8 +20,8 @@ class WorkoutsController < ApplicationController
     else
       @workout = Workout.find(params[:id])
       @workouts = @athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
-      @tomorrow = Workout.where(date: @workout.date.prev_day)[0]
-      @yesterday = Workout.where(date: @workout.date.next_day)[0]
+      @yesterday = Workout.where(date: @workout.date.prev_day).where(athlete_id: @athlete.id)[0]
+      @tomorrow = Workout.where(date: @workout.date.next_day).where(athlete_id: @athlete.id)[0]
 
       respond_to do |format|
         format.html { athlete_workout_path(@athlete, @workout) }
@@ -35,8 +36,8 @@ class WorkoutsController < ApplicationController
       redirect_to root_path
     else
       @workout = Workout.find(params[:id])
-      @tomorrow = Workout.where(date: @workout.date.prev_day)[0]
-      @yesterday = Workout.where(date: @workout.date.next_day)[0]
+      @yesterday = Workout.where(date: @workout.date.prev_day).where(athlete_id: @athlete.id)[0]
+      @tomorrow = Workout.where(date: @workout.date.next_day).where(athlete_id: @athlete.id)[0]
 
       if @workout.update(update_params)
         respond_to do |format|
