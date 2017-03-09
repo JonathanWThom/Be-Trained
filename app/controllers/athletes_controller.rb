@@ -1,5 +1,5 @@
 class AthletesController < ApplicationController
-  before_action :authenticate_coach!, :only => [:invite, :update, :destroy]
+  before_action :authenticate_coach!, :only => [:invite, :update]
   include ApplicationHelper
   expose :athlete
   expose :coach
@@ -56,10 +56,14 @@ class AthletesController < ApplicationController
     if invalid_user
       redirect_to root_path
     else
-      if athlete.destroy && current_coach
-        redirect_to coach_path(current_coach)
-      elsif athlete.destroy && current_athlete
-        redirect_to root_path
+      if current_coach
+        if athlete.destroy
+          redirect_to coach_path(current_coach)
+        end
+      elsif current_athlete
+        if athlete.destroy
+          redirect_to root_path
+        end
       end
     end
   end
