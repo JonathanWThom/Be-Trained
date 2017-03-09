@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+## refactor all of this to use factories
+
 describe Workout do
   describe '.search' do
     it 'returns workouts including search term' do
