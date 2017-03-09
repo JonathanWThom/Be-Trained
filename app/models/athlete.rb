@@ -8,6 +8,7 @@ class Athlete < ApplicationRecord
   validates :first_name, :last_name, :presence => true
   has_many :workouts
 
-
+  scope :confirmed, -> { where(confirmed: true) }
+  scope :unconfirmed, -> { where(confirmed: false) }
 
 end

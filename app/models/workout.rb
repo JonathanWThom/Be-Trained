@@ -9,4 +9,7 @@ class Workout < ActiveRecord::Base
       self.all
     end
   end
+
+  scope :today, -> { where(date: Date.today) }
+  
 end

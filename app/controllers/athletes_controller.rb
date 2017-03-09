@@ -1,12 +1,14 @@
 class AthletesController < ApplicationController
   before_action :authenticate_coach!, :only => [:invite, :update, :destroy]
   include ApplicationHelper
+
   def show
     @athlete = Athlete.find(params[:id])
     if @athlete
-      @today_workout = @athlete.workouts.where(date: Date.today)
+      @today_workout = @athlete.workouts.today
       @link_filter = AutoHtml::Link.new(target: '_blank')
       @workout = @athlete.workouts.new
+      ## refactor this to model?
       @workouts = @athlete.workouts.search(params[:search]).paginate(:page => params[:page], :per_page => 7).order(date: :desc)
       if valid_user
         redirect_to new_athlete_session_path
@@ -29,8 +31,8 @@ class AthletesController < ApplicationController
     if valid_user
       redirect_to root_path
     else
-      @athletes = @coach.athletes.where(confirmed: true)
-      @unconfirmed = @coach.athletes.where(confirmed: false)
+      @athletes = @coach.athletes.confirmed
+      @unconfirmed = @coach.athletes.unconfirmed
       if params[:accept] == "true"
         if @athlete.update(confirmed: true)
           respond_to do |format|
@@ -39,7 +41,7 @@ class AthletesController < ApplicationController
           end
         end
       elsif params[:ignore] == "true"
-        if @coach.athletes.delete(@athlete)
+        if @coach.athletes.destroy(@athlete)
           respond_to do |format|
             format.html { coach_path(@athlete.coach) }
             format.js
