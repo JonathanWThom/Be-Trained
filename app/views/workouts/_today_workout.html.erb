@@ -1,5 +1,5 @@
 <% @today_workout.each do |workout| %>
-  <h3><%= link_to 'Today', athlete_workout_path(@athlete, workout.id) %></h3>
+  <h3><%= link_to 'Today', athlete_workout_path(athlete, workout.id) %></h3>
   <%= simple_format(@link_filter.call(workout.workout)) %>
   <% if workout.coach_notes != '' %>
     <h5>Coach's Notes</h5>

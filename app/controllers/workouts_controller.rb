@@ -1,93 +1,89 @@
 class WorkoutsController < ApplicationController
   before_action :authenticate_coach!, :only => [:create, :destroy]
   include ApplicationHelper
+  expose :athlete
 
   def show
-    @athlete = Athlete.find(params[:athlete_id])
     if invalid_workout_user
       redirect_to root_path
     else
       @workout = Workout.find(params[:id])
       @link_filter = AutoHtml::Link.new(target: '_blank')
-      @previous = @athlete.workouts.previous(@workout.date)
-      @next = @athlete.workouts.next(@workout.date)
+      @previous = athlete.workouts.previous(@workout.date)
+      @next = athlete.workouts.next(@workout.date)
     end
   end
 
   def edit
-    @athlete = Athlete.find(params[:athlete_id])
     if invalid_workout_user
       redirect_to root_path
     else
       @workout = Workout.find(params[:id])
       @link_filter = AutoHtml::Link.new(target: '_blank')
       ## put below in model?
-      @workouts = @athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
-      @previous = @athlete.workouts.previous(@workout.date)
-      @next = @athlete.workouts.next(@workout.date)
+      @workouts = athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
+      @previous = athlete.workouts.previous(@workout.date)
+      @next = athlete.workouts.next(@workout.date)
       respond_to do |format|
-        format.html { athlete_workout_path(@athlete, @workout) }
+        format.html { athlete_workout_path(athlete, @workout) }
         format.js
       end
     end
   end
 
   def update
-    @athlete = Athlete.find(params[:athlete_id])
     @workout = Workout.find(params[:id])
     @link_filter = AutoHtml::Link.new(target: '_blank')
     if invalid_workout_user
       redirect_to root_path
-    elsif invalid_date(@workout, @athlete, update_params[:date])
+    elsif invalid_date(@workout, athlete, update_params[:date])
       flash[:notice] = "You may not add more than one workout for a day. Instead, edit the day's training to include multiple sessions."
-      redirect_to athlete_workout_path(@athlete, @workout)
+      redirect_to athlete_workout_path(athlete, @workout)
     else
-      @previous = @athlete.workouts.previous(@workout.date)
-      @next = @athlete.workouts.next(@workout.date)
+      @previous = athlete.workouts.previous(@workout.date)
+      @next = athlete.workouts.next(@workout.date)
       if @workout.update(update_params)
         respond_to do |format|
-          format.html { athlete_workout_path(@athlete, @workout) }
+          format.html { athlete_workout_path(athlete, @workout) }
           format.js
         end
       else
-        redirect_to athlete_workout_path(@athlete, @workout)
+        redirect_to athlete_workout_path(athlete, @workout)
       end
     end
   end
 
   def create
-    @athlete = Athlete.find(params[:athlete_id])
-    if current_coach != @athlete.coach
+    if current_coach != athlete.coach
       redirect_to new_coach_session_path
     else
-      @today_workout = @athlete.workouts.today
-      @workouts = @athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
-      @workout = @athlete.workouts.new
+      @today_workout = athlete.workouts.today
+      @workouts = athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
+      @workout = athlete.workouts.new
       @link_filter = AutoHtml::Link.new(target: '_blank')
-      @new_workout = @athlete.workouts.new(workout_params)
-      if @athlete.workouts.date_number(workout_params[:date]) > 0
+      @new_workout = athlete.workouts.new(workout_params)
+      if athlete.workouts.date_number(workout_params[:date]) > 0
         flash[:notice] = "You may not add more than one workout for a day. Instead, edit the day's training to include multiple sessions."
-        redirect_to coach_athlete_path(@athlete.coach, @athlete)
+        redirect_to coach_athlete_path(athlete.coach, athlete)
       elsif @new_workout.save
         respond_to do |format|
-          format.html { coach_athlete_path(@athlete.coach, @athlete) }
+          format.html { coach_athlete_path(athlete.coach, athlete) }
           format.js
         end
       else
-        redirect_to coach_athlete_path(@athlete.coach, @athlete)
+        redirect_to coach_athlete_path(athlete.coach, athlete)
       end
     end
   end
 
   def destroy
-    @athlete = Athlete.find(params[:athlete_id])
-    if current_coach != @athlete.coach
+    if current_coach != athlete.coach
       redirect_to new_coach_session_path
     else
       @link_filter = AutoHtml::Link.new(target: '_blank')
       @workout = Workout.find(params[:id])
       @workout.destroy
-      redirect_to coach_athlete_path(@athlete.coach, @athlete)
+      redirect_to coach_athlete_path(athlete.coach, athlete)
     end
   end
 

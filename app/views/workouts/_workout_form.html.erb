@@ -1,7 +1,7 @@
 <div class="coach-registration coach-box">
   <div class="field">
     <h2>New Workout</h2>
-    <%= form_for [@athlete, @workout], remote: true do |f| %>
+    <%= form_for [athlete, @workout], remote: true do |f| %>
       <%= f.label :date %>
       <%= f.date_field :date %>
       <%= f.label :workout %>

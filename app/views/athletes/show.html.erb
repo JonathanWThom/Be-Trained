@@ -1,6 +1,6 @@
 <div class="coach-container">
   <div class="coach-registration coach-box">
-    <h2><%= @athlete.first_name %> <%= @athlete.last_name %></h2>
+    <h2><%= athlete.first_name %> <%= athlete.last_name %></h2>
     <div class="today-workout">
       <%= render 'workouts/today_workout' %>
     </div>
@@ -13,7 +13,7 @@
 
   <div class="coach-registration coach-box">
     <div class="field">
-      <%= form_tag coach_athlete_path(@athlete.coach, @athlete), :method => 'get', :id => 'search', remote: true do %>
+      <%= form_tag coach_athlete_path(athlete.coach, athlete), :method => 'get', :id => 'search', remote: true do %>
       <p>
         <%= text_field_tag :search, params[:search] %>
         <%= submit_tag "Search", :term => nil, :class => 'btn home-btn' %>
@@ -22,10 +22,10 @@
     </div>
   </div>
   <!-- show and hide this on click -->
-  <% if current_coach && (@athlete.coach == current_coach) %>
+  <% if current_coach && (athlete.coach == current_coach) %>
     <div id="workout-form">
       <%= render 'workouts/workout_form' %>
     </div>
   <% end %>
-    <%= link_to 'Delete Account', coach_athlete_path(@athlete.coach, @athlete), :data => {:confirm => "Are you sure you want to delete this profile?", :method => "delete"}, class: 'btn home-btn' %>
+    <%= link_to 'Delete Account', coach_athlete_path(athlete.coach, athlete), :data => {:confirm => "Are you sure you want to delete this profile?", :method => "delete"}, class: 'btn home-btn' %>
 </div>
