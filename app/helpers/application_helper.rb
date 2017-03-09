@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def invalid_date(workout, athlete, date)
-    if (workout.date != date) && (athlete.workouts.where(date: date).length > 0)
+    if (workout.date != date) && (athlete.workouts.date_number(date) > 0)
       true
     end
   end
