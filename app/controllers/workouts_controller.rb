@@ -4,13 +4,11 @@ class WorkoutsController < ApplicationController
 
   def show
     @athlete = Athlete.find(params[:athlete_id])
-    ## helper method
     if invalid_workout_user
       redirect_to root_path
     else
       @workout = Workout.find(params[:id])
       @link_filter = AutoHtml::Link.new(target: '_blank')
-      ## put this in model
       @previous = @athlete.workouts.previous(@workout.date)
       @next = @athlete.workouts.next(@workout.date)
     end
@@ -23,10 +21,10 @@ class WorkoutsController < ApplicationController
     else
       @workout = Workout.find(params[:id])
       @link_filter = AutoHtml::Link.new(target: '_blank')
+      ## put below in model?
       @workouts = @athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
-      @previous = Workout.where( "date < ?", @workout.date ).order( "date DESC" ).where(athlete_id: @athlete.id).first
-      @next = Workout.where( "date > ?", @workout.date ).order( "date" ).where(athlete_id: @athlete.id).first
-
+      @previous = @athlete.workouts.previous(@workout.date)
+      @next = @athlete.workouts.next(@workout.date)
       respond_to do |format|
         format.html { athlete_workout_path(@athlete, @workout) }
         format.js
@@ -40,12 +38,12 @@ class WorkoutsController < ApplicationController
     @link_filter = AutoHtml::Link.new(target: '_blank')
     if invalid_workout_user
       redirect_to root_path
-    elsif @workout.date != update_params[:date] && @athlete.workouts.where(date: update_params[:date]).length > 0
+    elsif invalid_date(@workout, @athlete, update_params[:date])
       flash[:notice] = "You may not add more than one workout for a day. Instead, edit the day's training to include multiple sessions."
       redirect_to athlete_workout_path(@athlete, @workout)
     else
-      @previous = Workout.where( "date < ?", @workout.date ).order( "date DESC" ).where(athlete_id: @athlete.id).first
-      @next = Workout.where( "date > ?", @workout.date ).order( "date" ).where(athlete_id: @athlete.id).first
+      @previous = @athlete.workouts.previous(@workout.date)
+      @next = @athlete.workouts.next(@workout.date)
       if @workout.update(update_params)
         respond_to do |format|
           format.html { athlete_workout_path(@athlete, @workout) }

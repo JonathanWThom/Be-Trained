@@ -10,4 +10,10 @@ module ApplicationHelper
       true
     end
   end
+
+  def invalid_date(workout, athlete, date)
+    if (workout.date != date) && (athlete.workouts.where(date: date).length > 0)
+      true
+    end
+  end
 end
