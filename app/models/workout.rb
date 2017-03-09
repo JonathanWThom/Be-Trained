@@ -11,5 +11,13 @@ class Workout < ActiveRecord::Base
   end
 
   scope :today, -> { where(date: Date.today) }
-  
+
+  scope :previous, ->(workout_date) {
+    where("date < ?", workout_date).order("date DESC").first
+  }
+
+  scope :next, ->(workout_date) {
+    where("date > ?", workout_date).order("date").first
+  }
+
 end

@@ -1,6 +1,7 @@
 class WorkoutsController < ApplicationController
   before_action :authenticate_coach!, :only => [:create, :destroy]
   include ApplicationHelper
+
   def show
     @athlete = Athlete.find(params[:athlete_id])
     ## helper method
@@ -10,8 +11,8 @@ class WorkoutsController < ApplicationController
       @workout = Workout.find(params[:id])
       @link_filter = AutoHtml::Link.new(target: '_blank')
       ## put this in model
-      @previous = Workout.where( "date < ?", @workout.date ).order( "date DESC" ).where(athlete_id: @athlete.id).first
-      @next = Workout.where( "date > ?", @workout.date ).order( "date" ).where(athlete_id: @athlete.id).first
+      @previous = @athlete.workouts.previous(@workout.date)
+      @next = @athlete.workouts.next(@workout.date)
     end
   end
 
