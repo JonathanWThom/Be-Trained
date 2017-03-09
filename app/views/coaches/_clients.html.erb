@@ -1,7 +1,7 @@
 <div class="coach-registration coach-box">
   <h2>Your Athletes</h2>
   <% @athletes.each do |athlete| %>
-  <h5><%= link_to "#{athlete.first_name} #{athlete.last_name}", coach_athlete_path(@coach, athlete) %></h5>
+  <h5><%= link_to "#{athlete.first_name} #{athlete.last_name}", coach_athlete_path(coach, athlete) %></h5>
   <!--pagination, links-->
   <% end %>
   <% if @unconfirmed.any? %>
@@ -9,8 +9,8 @@
   <% @unconfirmed.each do |athlete| %>
   <h5>
     <%= athlete.first_name %> <%= athlete.last_name %>
-    <%= link_to image_tag("checkmark.png", class: 'confirmation'), coach_athlete_path(@coach, athlete, :accept => true), remote: true, :method => :patch %>
-    <%= link_to image_tag("red_x.png", class: 'confirmation'), coach_athlete_path(@coach, athlete, :ignore => true), remote: true, :method => :patch %>
+    <%= link_to image_tag("checkmark.png", class: 'confirmation'), coach_athlete_path(coach, athlete, :accept => true), remote: true, :method => :patch %>
+    <%= link_to image_tag("red_x.png", class: 'confirmation'), coach_athlete_path(coach, athlete, :ignore => true), remote: true, :method => :patch %>
   </h5>
   <% end %>
   <% end %>
@@ -19,7 +19,7 @@
 <div class="coach-registration lower-box">
   <div class="field">
     <h2>Invite</h2>
-    <%= form_tag invite_path(@coach) do %>
+    <%= form_tag invite_path(coach) do %>
     <%= label_tag :email %>
     <%= email_field_tag :email %>
     <%= submit_tag 'Send Invite', class: 'btn home-btn' %>

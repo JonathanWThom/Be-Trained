@@ -2,6 +2,7 @@ class AthletesController < ApplicationController
   before_action :authenticate_coach!, :only => [:invite, :update, :destroy]
   include ApplicationHelper
   expose :athlete
+  expose :coach
 
 
   def show
@@ -20,19 +21,17 @@ class AthletesController < ApplicationController
   end
 
   def invite
-    @coach = Coach.find(params[:id])
     @email = params[:email]
-    InviteMailer.invite_email(@coach, @email).deliver_now
-    redirect_to coach_path(@coach)
+    InviteMailer.invite_email(coach, @email).deliver_now
+    redirect_to coach_path(coach)
   end
 
   def update
-    @coach = Coach.find(params[:coach_id])
     if invalid_user
       redirect_to root_path
     else
-      @athletes = @coach.athletes.confirmed
-      @unconfirmed = @coach.athletes.unconfirmed
+      @athletes = coach.athletes.confirmed
+      @unconfirmed = coach.athletes.unconfirmed
       if params[:accept] == "true"
         if athlete.update(confirmed: true)
           respond_to do |format|
@@ -41,7 +40,7 @@ class AthletesController < ApplicationController
           end
         end
       elsif params[:ignore] == "true"
-        if @coach.athletes.destroy(athlete)
+        if coach.athletes.destroy(athlete)
           respond_to do |format|
             format.html { coach_path(athlete.coach) }
             format.js
