@@ -15,7 +15,7 @@ Or, you get it up and running through the following steps:
 2. ```bundle install```
 3. ```postgres```
 4. ```rake db:setup```
-5. If you want to send email in development, you'll be good to go. But if you want to use it in production, you'll need to set up an SMTP server as described (here)[http://www.jonathanthom.com/blog/Getting%20the%20Action%20Mailer%20to%20Actually%20Mail%20(with%20Mailgun)]
+5. If you want to send email in development, you'll be good to go. But if you want to use it in production, you'll need to set up an SMTP server (I used Mailgun).
 6. ```rails s```
 
 ### Tech
