@@ -1,6 +1,6 @@
 class AthletesController < ApplicationController
   before_action :authenticate_coach!, :only => [:invite, :update, :destroy]
-
+  include ApplicationHelper
   def show
     @athlete = Athlete.find(params[:id])
     if @athlete
@@ -8,7 +8,7 @@ class AthletesController < ApplicationController
       @link_filter = AutoHtml::Link.new(target: '_blank')
       @workout = @athlete.workouts.new
       @workouts = @athlete.workouts.search(params[:search]).paginate(:page => params[:page], :per_page => 7).order(date: :desc)
-      if (current_coach && (current_coach != @athlete.coach)) || (current_athlete && (current_athlete != @athlete))
+      if valid_user
         redirect_to new_athlete_session_path
       end
     else
@@ -26,7 +26,7 @@ class AthletesController < ApplicationController
   def update
     @athlete = Athlete.find(params[:id])
     @coach = Coach.find(params[:coach_id])
-    if (current_coach && (current_coach != @athlete.coach)) || (current_athlete && (current_athlete != @athlete))
+    if valid_user
       redirect_to root_path
     else
       @athletes = @coach.athletes.where(confirmed: true)
@@ -53,7 +53,7 @@ class AthletesController < ApplicationController
 
   def destroy
     @athlete = Athlete.find(params[:id])
-    if (current_coach && (current_coach != @athlete.coach)) || (current_athlete && (current_athlete != @athlete))
+    if valid_user
       redirect_to root_path
     else
       if @athlete.destroy && current_coach
