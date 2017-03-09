@@ -65,7 +65,7 @@ class WorkoutsController < ApplicationController
       @workout = @athlete.workouts.new
       @link_filter = AutoHtml::Link.new(target: '_blank')
       @new_workout = @athlete.workouts.new(workout_params)
-      if @athlete.workouts.where(date: workout_params[:date]).length > 0
+      if @athlete.workouts.date_number(workout_params[:date]) > 0
         flash[:notice] = "You may not add more than one workout for a day. Instead, edit the day's training to include multiple sessions."
         redirect_to coach_athlete_path(@athlete.coach, @athlete)
       elsif @new_workout.save

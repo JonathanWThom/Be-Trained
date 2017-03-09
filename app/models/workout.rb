@@ -20,4 +20,8 @@ class Workout < ActiveRecord::Base
     where("date > ?", workout_date).order("date").first
   }
 
+  scope :date_number, ->(date) {
+    where(date: date).length
+  }
+
 end
