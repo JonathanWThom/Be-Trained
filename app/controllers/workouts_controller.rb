@@ -1,10 +1,10 @@
 class WorkoutsController < ApplicationController
   before_action :authenticate_coach!, :only => [:create, :destroy]
-
+  include ApplicationHelper
   def show
     @athlete = Athlete.find(params[:athlete_id])
     ## helper method
-    if (current_coach && (!current_coach.athletes.include?(@athlete))) || (current_athlete && (current_athlete != @athlete))
+    if invalid_workout_user
       redirect_to root_path
     else
       @workout = Workout.find(params[:id])
@@ -17,7 +17,7 @@ class WorkoutsController < ApplicationController
 
   def edit
     @athlete = Athlete.find(params[:athlete_id])
-    if (current_coach && @athlete.coach != current_coach) || (current_athlete && @athlete != current_athlete)
+    if invalid_workout_user
       redirect_to root_path
     else
       @workout = Workout.find(params[:id])
@@ -37,7 +37,7 @@ class WorkoutsController < ApplicationController
     @athlete = Athlete.find(params[:athlete_id])
     @workout = Workout.find(params[:id])
     @link_filter = AutoHtml::Link.new(target: '_blank')
-    if (current_coach && (current_coach != @athlete.coach)) || (current_athlete && (current_athlete != @athlete))
+    if invalid_workout_user
       redirect_to root_path
     elsif @workout.date != update_params[:date] && @athlete.workouts.where(date: update_params[:date]).length > 0
       flash[:notice] = "You may not add more than one workout for a day. Instead, edit the day's training to include multiple sessions."

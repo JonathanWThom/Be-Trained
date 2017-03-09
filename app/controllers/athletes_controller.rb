@@ -10,7 +10,7 @@ class AthletesController < ApplicationController
       @workout = @athlete.workouts.new
       ## refactor this to model?
       @workouts = @athlete.workouts.search(params[:search]).paginate(:page => params[:page], :per_page => 7).order(date: :desc)
-      if valid_user
+      if invalid_user
         redirect_to new_athlete_session_path
       end
     else
@@ -28,7 +28,7 @@ class AthletesController < ApplicationController
   def update
     @athlete = Athlete.find(params[:id])
     @coach = Coach.find(params[:coach_id])
-    if valid_user
+    if invalid_user
       redirect_to root_path
     else
       @athletes = @coach.athletes.confirmed
@@ -55,7 +55,7 @@ class AthletesController < ApplicationController
 
   def destroy
     @athlete = Athlete.find(params[:id])
-    if valid_user
+    if invalid_user
       redirect_to root_path
     else
       if @athlete.destroy && current_coach
