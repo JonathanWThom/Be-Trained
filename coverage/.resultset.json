@@ -57,8 +57,8 @@
         null,
         null,
         1,
-        0,
-        0,
+        1,
+        1,
         null,
         null,
         null,
@@ -986,8 +986,8 @@
         1,
         null,
         1,
-        0,
-        0,
+        1,
+        1,
         null,
         0,
         null,
@@ -1012,14 +1012,32 @@
       "/Users/JonathanThom/Desktop/be-trained/spec/factories/athletes.rb": [
         1,
         1,
-        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
         null,
         null
       ],
       "/Users/JonathanThom/Desktop/be-trained/spec/factories/coaches.rb": [
         1,
         1,
+        1,
+        1,
+        1,
+        1,
+        1,
         null,
+        null
+      ],
+      "/Users/JonathanThom/Desktop/be-trained/spec/factories/workout.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
         null,
         null
       ],
@@ -1034,7 +1052,7 @@
         1,
         null,
         1,
-        7,
+        98,
         null,
         null,
         null,
@@ -1055,8 +1073,23 @@
         1,
         1,
         null
+      ],
+      "/Users/JonathanThom/Desktop/be-trained/spec/models/workout_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
       ]
     },
-    "timestamp": 1489088704
+    "timestamp": 1489095493
   }
 }

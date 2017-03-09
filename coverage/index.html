@@ -14,27 +14,27 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-03-09T11:45:04-08:00">2017-03-09T11:45:04-08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-03-09T13:38:13-08:00">2017-03-09T13:38:13-08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">56.6%</span></span>
+    (<span class="covered_percent"><span class="red">60.66%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.61
+         0.89
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>43</b> files in total.
-    <b>341</b> relevant lines. 
-    <span class="green"><b>193</b> lines covered</span> and
-    <span class="red"><b>148</b> lines missed </span>
+    <b>45</b> files in total.
+    <b>366</b> relevant lines. 
+    <span class="green"><b>222</b> lines covered</span> and
+    <span class="red"><b>144</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -222,12 +222,12 @@
       
       <tr>
         <td class="strong"><a href="#c309300fccb9f193b4f47f6beec3cfabb33ff9ec" class="src_link" title="app/models/workout.rb">app/models/workout.rb</a></td>
-        <td class="red strong">57.14 %</td>
+        <td class="red strong">71.43 %</td>
         <td>27</td>
         <td>14</td>
-        <td>8</td>
-        <td>6</td>
-        <td>0.6</td>
+        <td>10</td>
+        <td>4</td>
+        <td>0.7</td>
       </tr>
       
       <tr>
@@ -403,9 +403,9 @@
       <tr>
         <td class="strong"><a href="#cc9ae3b7978045e5f15f32a4cb43499ec908703f" class="src_link" title="spec/factories/athletes.rb">spec/factories/athletes.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>5</td>
-        <td>2</td>
-        <td>2</td>
+        <td>10</td>
+        <td>8</td>
+        <td>8</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -413,9 +413,19 @@
       <tr>
         <td class="strong"><a href="#a834861470c6cfa56010abc907004d87f8fc2810" class="src_link" title="spec/factories/coaches.rb">spec/factories/coaches.rb</a></td>
         <td class="green strong">100.0 %</td>
+        <td>9</td>
+        <td>7</td>
+        <td>7</td>
+        <td>0</td>
+        <td>1.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#db81d25f609311f0cde120fd6f1e522b727ebd39" class="src_link" title="spec/factories/workout.rb">spec/factories/workout.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>7</td>
         <td>5</td>
-        <td>2</td>
-        <td>2</td>
+        <td>5</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -451,13 +461,23 @@
       </tr>
       
       <tr>
+        <td class="strong"><a href="#fe65c922916902e4e2bd8177eac8d9d05e745f8f" class="src_link" title="spec/models/workout_spec.rb">spec/models/workout_spec.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>13</td>
+        <td>9</td>
+        <td>9</td>
+        <td>0</td>
+        <td>1.0</td>
+      </tr>
+      
+      <tr>
         <td class="strong"><a href="#27e46581f960b0b43021d6b0f83b524bd56d95ab" class="src_link" title="spec/rails_helper.rb">spec/rails_helper.rb</a></td>
-        <td class="green strong">92.31 %</td>
+        <td class="green strong">100.0 %</td>
         <td>80</td>
         <td>26</td>
-        <td>24</td>
-        <td>2</td>
-        <td>0.9</td>
+        <td>26</td>
+        <td>0</td>
+        <td>1.0</td>
       </tr>
       
       <tr>
@@ -477,7 +497,7 @@
         <td>6</td>
         <td>6</td>
         <td>0</td>
-        <td>2.0</td>
+        <td>17.2</td>
       </tr>
       
     </tbody>
@@ -2905,11 +2925,11 @@
         <div class="source_table" id="c309300fccb9f193b4f47f6beec3cfabb33ff9ec">
   <div class="header">
     <h3>app/models/workout.rb</h3>
-    <h4><span class="red">57.14 %</span> covered</h4>
+    <h4><span class="red">71.43 %</span> covered</h4>
     <div>
       <b>14</b> relevant lines. 
-      <span class="green"><b>8</b> lines covered</span> and
-      <span class="red"><b>6</b> lines missed.</span>
+      <span class="green"><b>10</b> lines covered</span> and
+      <span class="red"><b>4</b> lines missed.</span>
     </div>
   </div>
   
@@ -2946,14 +2966,14 @@
           <code class="ruby">  def self.search(search)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="6">
-          
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
           
           <code class="ruby">    if search</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="7">
-          
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
           
           <code class="ruby">      where(&#39;workout LIKE ?&#39;, &quot;%#{search}%&quot;)</code>
         </li>
@@ -6225,8 +6245,8 @@
     <h3>spec/factories/athletes.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>2</b> relevant lines. 
-      <span class="green"><b>2</b> lines covered</span> and
+      <b>8</b> relevant lines. 
+      <span class="green"><b>8</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -6246,19 +6266,49 @@
           <code class="ruby">  factory :athlete do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="3">
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    </code>
+          <code class="ruby">    email &#39;athlete@athlete.com&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="4">
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    first_name &#39;Athlete&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    last_name &#39;Athleterton&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    password &#39;123123&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    password_confirmation &#39;123123&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    coach</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="9">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="5">
+        <li class="never" data-hits="" data-linenumber="10">
           
           
           <code class="ruby">end</code>
@@ -6273,8 +6323,8 @@
     <h3>spec/factories/coaches.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>2</b> relevant lines. 
-      <span class="green"><b>2</b> lines covered</span> and
+      <b>7</b> relevant lines. 
+      <span class="green"><b>7</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -6294,19 +6344,103 @@
           <code class="ruby">  factory :coach do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="3">
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    </code>
+          <code class="ruby">    email &#39;coach@coach.com&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="4">
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    first_name &#39;Coach&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    last_name &#39;Coacherton&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    password &#39;123123&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    password_confirmation &#39;123123&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="5">
+        <li class="never" data-hits="" data-linenumber="9">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="db81d25f609311f0cde120fd6f1e522b727ebd39">
+  <div class="header">
+    <h3>spec/factories/workout.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>5</b> relevant lines. 
+      <span class="green"><b>5</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">FactoryGirl.define do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  factory :workout do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    date Date.today</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    workout &#39;This is the workout&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    athlete</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
           
           
           <code class="ruby">end</code>
@@ -6460,14 +6594,110 @@
   </pre>
 </div>
       
+        <div class="source_table" id="fe65c922916902e4e2bd8177eac8d9d05e745f8f">
+  <div class="header">
+    <h3>spec/models/workout_spec.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>9</b> relevant lines. 
+      <span class="green"><b>9</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require &#39;rails_helper&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="2">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">describe Workout do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe &#39;.search&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it &#39;returns workouts including search term&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      coach = create(:coach)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      athlete = coach.athletes.create(first_name: &#39;athlete&#39;, last_name: &#39;number 1&#39;, email: &#39;test@email.com&#39;, password: &#39;123123&#39;, password_confirmation: &#39;123123&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      workout = athlete.workouts.create(workout: &#39;this is the workout&#39;, date: Date.today)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="9">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      workout2 = athlete.workouts.create(workout: &#39;hey&#39;, date: Date.today)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="10">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(Workout.search(&#39;hey&#39;)).to eq([workout2])</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
         <div class="source_table" id="27e46581f960b0b43021d6b0f83b524bd56d95ab">
   <div class="header">
     <h3>spec/rails_helper.rb</h3>
-    <h4><span class="green">92.31 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
       <b>26</b> relevant lines. 
-      <span class="green"><b>24</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
+      <span class="green"><b>26</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -6762,14 +6992,14 @@
           <code class="ruby">  config.around(:each) do |example|</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="49">
-          
+        <li class="covered" data-hits="1" data-linenumber="49">
+          <span class="hits">1</span>
           
           <code class="ruby">    DatabaseCleaner.cleaning do</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="50">
-          
+        <li class="covered" data-hits="1" data-linenumber="50">
+          <span class="hits">1</span>
           
           <code class="ruby">      example.run</code>
         </li>
@@ -7038,8 +7268,8 @@
           <code class="ruby">  def self.connection</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="6">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="98" data-linenumber="6">
+          <span class="hits">98</span>
           
           <code class="ruby">    @@shared_connection || retrieve_connection</code>
         </li>
