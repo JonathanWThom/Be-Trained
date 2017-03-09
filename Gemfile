@@ -13,6 +13,7 @@ gem 'materialize-sass'
 gem 'devise'
 gem 'will_paginate', '~> 3.1.0'
 gem 'auto_html'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   gem 'byebug', platform: :mri

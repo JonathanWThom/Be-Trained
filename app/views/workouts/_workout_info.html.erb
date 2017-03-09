@@ -9,7 +9,7 @@
 </div>
 
 <p><%= simple_format(@link_filter.call(@workout.workout)) %></p>
-<% if @workout.coach_notes %>
+<% if @workout.coach_notes != '' %>
   <h5>Coach's Notes</h5>
   <p><%= simple_format(@link_filter.call(@workout.coach_notes)) %></p>
 <% end %>
