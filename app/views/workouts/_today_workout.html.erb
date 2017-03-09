@@ -2,7 +2,7 @@
   <h3><%= link_to 'Today', athlete_workout_path(@athlete, workout.id) %></h3>
   <%= simple_format(@link_filter.call(workout.workout)) %>
   <h5>Coach's Notes</h5>
-  <%= simple_format(@link_filter.call(workout.workout)) %>
+  <%= simple_format(@link_filter.call(workout.coach_notes)) %>
   <% if @today_workout[0].results %>
     <h5>Results</h5>
     <%= simple_format(@link_filter.call(@today_workout[0].results)) %>
