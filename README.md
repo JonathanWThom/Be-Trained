@@ -8,9 +8,10 @@ Cool features include a mailer (for the invite), user authentication and home-sp
 
 ### Set Up
 
-Deployed at [betrained.us](http://betrained.us/).
+Deployed at [betrained.us](http://betrained.us/)
 
 Or, you get it up and running through the following steps:
+
 1. Clone it.
 2. ```bundle install```
 3. ```postgres```
