@@ -10,12 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.turbolinks
 //= require_tree .
 //= require materialize-sprockets
+
 $(document).on('turbolinks:load', function() {
   $('body').on('click', '.pagination a', function(){
     $.getScript(this.getAttribute('href'));
