@@ -7,7 +7,11 @@ def create
   if successfully_sent?(resource)
     respond_with({}, location: after_sending_reset_password_instructions_path_for(resource_name))
   else
-    flash[:notice] = "Invalid email."
+    if resource_params[:email] = ''
+      flash[:notice] = "Email can\'t be blank"
+    else
+      flash[:notice] = "Invalid email"
+    end
     respond_with(resource)
   end
 end
