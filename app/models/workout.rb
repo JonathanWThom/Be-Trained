@@ -10,7 +10,7 @@ class Workout < ActiveRecord::Base
     end
   end
 
-  scope :today, ->(athlete) { where(date: Date.today).where(athlete_id: athlete.id) }
+  scope :today, ->(athlete) { where(date: Time.zone.now.beginning_of_day).where(athlete_id: athlete.id) }
 
   scope :previous, ->(workout_date) {
     where("date < ?", workout_date).order("date DESC").first
