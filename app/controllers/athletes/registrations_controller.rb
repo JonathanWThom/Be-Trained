@@ -16,9 +16,8 @@ class Athletes::RegistrationsController < Devise::RegistrationsController
       end
     else
       clean_up_passwords resource
+      flash[:notice] = resource.errors.full_messages
       set_minimum_password_length
-      ## change this to include real error messages eventually
-      flash[:notice] = "There were some problems with your registration."
       redirect_back(fallback_location: root_path)
     end
   end
