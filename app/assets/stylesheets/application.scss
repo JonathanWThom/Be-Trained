@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
 @import "materialize/components/color";
 $primary-color: color("blue", "lighten-2") !default;
 $secondary-color: #870000;
@@ -20,12 +21,14 @@ $secondary-color: #870000;
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 .notice {
+  background-color: black;
   background-color: rgba(0, 0, 0, 0.5);
   font-size: 24px;
-  width: 20%;
-  color: #870000;
+  display: inline-block;
+  color: #b7b7b7;
   margin-left: 20px;
-  padding-left: 10px;
+  padding: 0px 10px 0px 10px;
+
 }
 #nav {
   background-color: rgba(0, 0, 0, 0.5);
@@ -43,7 +46,7 @@ $secondary-color: #870000;
       color: #b7b7b7;
     }
     a:hover {
-      color: #870000
+      color: #870000;
     }
   }
   #logout {
