@@ -7,7 +7,7 @@ class AthletesController < ApplicationController
 
   def show
     if athlete
-      @today_workout = Workout.today(athlete)
+      @today_workout = athlete.workouts.where(date: Date.today)
       @link_filter = AutoHtml::Link.new(target: '_blank')
       @workout = athlete.workouts.new
       ## refactor this to model?
