@@ -22,8 +22,18 @@ class AthletesController < ApplicationController
 
   def invite
     @email = params[:email]
-    InviteMailer.invite_email(coach, @email).deliver_now
-    redirect_to coach_path(coach)
+    if @email != ''
+      if InviteMailer.invite_email(coach, @email).deliver_now
+        flash[:notice] = "You sent an invitation to #{@email}."
+        redirect_to coach_path(coach)
+      else
+        flash[:notice] = "Something went wrong with your invitation."
+        redirect_to coach_path(coach)
+      end
+    else
+      flash[:notice] = "Please add an email to invite an athlete."
+      redirect_to coach_path(coach)
+    end
   end
 
   def update
