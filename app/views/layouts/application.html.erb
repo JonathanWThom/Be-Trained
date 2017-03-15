@@ -26,7 +26,7 @@
         </ul>
       </div>
     <% end %>
-    <div class="errors">
+    <div class="notice-wrapper">
       <% if devise_error_messages! != '' && devise_error_messages! != nil %>
         <%= devise_error_messages! %>
       <% elsif notice.is_a?(Array) %>

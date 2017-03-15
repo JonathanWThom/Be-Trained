@@ -26,11 +26,11 @@ $secondary-color: #870000;
   font-size: 24px;
   display: inline-block;
   color: #b7b7b7;
-  margin-left: 20px;
   padding: 0px 10px 0px 10px;
+  z-index: 1;
 }
 
-.errors {
+.notice-wrapper {
   text-align: center;
 }
 #nav {
@@ -78,6 +78,7 @@ body {
     top: 60px;
   }
   .notice {
+    background-color: rgba(0, 0, 0, 0.8);
     position: relative;
     top: 22px;
   }
