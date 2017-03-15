@@ -52,7 +52,7 @@ $secondary-color: #870000;
       color: #870000;
     }
   }
-  #logout {
+  .logout {
     float: right;
     margin-top: 12px;
     margin-right: 5px;
@@ -73,7 +73,7 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-  #logout, .console {
+  .logout, .console {
     position: relative;
     top: 60px;
   }

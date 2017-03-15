@@ -16,9 +16,9 @@
         <ul>
           <li><h2 class="center-align"><%= link_to "BeTrained", root_path %></h2></li>
           <% if current_coach %>
-            <li><%= link_to "Log Out", destroy_coach_session_path, method: :delete, class: 'btn btn-home', id: 'logout' %></li>
+            <li><%= link_to "Log Out", destroy_coach_session_path, method: :delete, class: 'btn btn-home logout' %></li>
           <% elsif current_athlete %>
-            <li><%= link_to "Log Out", destroy_athlete_session_path, method: :delete, class: 'btn btn-home', id: 'logout' %></li>
+            <li><%= link_to "Log Out", destroy_athlete_session_path, method: :delete, class: 'btn btn-home logout' %></li>
           <% end %>
           <% if current_coach %>
             <li><%= link_to "Coach Console", coach_path(current_coach), class: 'btn btn-home console' %></li>
