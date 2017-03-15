@@ -28,7 +28,10 @@ $secondary-color: #870000;
   color: #b7b7b7;
   margin-left: 20px;
   padding: 0px 10px 0px 10px;
+}
 
+.errors {
+  text-align: center;
 }
 #nav {
   background-color: rgba(0, 0, 0, 0.5);
@@ -69,16 +72,14 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
-@media screen and (max-width: 1200px) {
-  .notice {
-    display: none;
-  }
-}
-
 @media screen and (max-width: 768px) {
   #logout, .console {
     position: relative;
     top: 60px;
+  }
+  .notice {
+    position: relative;
+    top: 22px;
   }
 }
 

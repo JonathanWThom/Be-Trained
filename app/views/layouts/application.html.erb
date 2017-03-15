@@ -26,22 +26,23 @@
         </ul>
       </div>
     <% end %>
-
-    <% if devise_error_messages! != '' && devise_error_messages! != nil %>
-      <%= devise_error_messages! %>
-    <% elsif notice.is_a?(Array) %>
-      <div class="notice">
-        <% notice.each do |message| %>
-          <p><%= message %></p>
-        <% end %>
-      </div>
-    <% elsif notice %>
-      <p class="notice"><%= notice %></p>
-    <% else %>
-      <%- flash.each do |name, msg| -%>
-        <%= content_tag :p, msg, :id => "flash_#{name}", class: 'notice' if msg.is_a?(String) %>
-      <%- end -%>
-    <% end %>
+    <div class="errors">
+      <% if devise_error_messages! != '' && devise_error_messages! != nil %>
+        <%= devise_error_messages! %>
+      <% elsif notice.is_a?(Array) %>
+        <div class="notice">
+          <% notice.each do |message| %>
+            <p><%= message %></p>
+          <% end %>
+        </div>
+      <% elsif notice %>
+        <p class="notice"><%= notice %></p>
+      <% else %>
+        <%- flash.each do |name, msg| -%>
+          <%= content_tag :p, msg, :id => "flash_#{name}", class: 'notice' if msg.is_a?(String) %>
+        <%- end -%>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
