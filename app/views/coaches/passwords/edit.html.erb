@@ -6,11 +6,11 @@
     <%= f.hidden_field :reset_password_token %>
 
     <div class="field">
-      <%= f.password_field :password, autofocus: true, autocomplete: "off", 'New Password (6 characters minimum)' %>
+      <%= f.password_field :password, autofocus: true, autocomplete: "off", placeholder: 'New Password (6 characters minimum)' %>
     </div>
 
     <div class="field">
-      <%= f.password_field :password_confirmation, autocomplete: "off", 'Confirm New Password' %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirm New Password' %>
     </div>
 
     <div class="actions">
