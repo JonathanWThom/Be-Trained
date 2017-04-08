@@ -4,13 +4,11 @@ class AthletesController < ApplicationController
   expose :athlete
   expose :coach
 
-
   def show
     if athlete
       @today_workout = Workout.today(athlete)
       @link_filter = AutoHtml::Link.new(target: '_blank')
       @workout = athlete.workouts.new
-      ## refactor this to model?
       @workouts = athlete.workouts.search(params[:search]).paginate(:page => params[:page], :per_page => 7).order(date: :desc)
       if invalid_user
         redirect_to new_athlete_session_path
