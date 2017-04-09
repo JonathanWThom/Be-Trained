@@ -3,6 +3,7 @@ class AthletesController < ApplicationController
   include ApplicationHelper
   expose :athlete
   expose :coach
+  expose :exercises, ->{ athlete.exercises.order("updated_at DESC") }
 
   def show
     if athlete

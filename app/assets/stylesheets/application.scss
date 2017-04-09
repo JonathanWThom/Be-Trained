@@ -30,6 +30,14 @@ $secondary-color: #870000;
   z-index: 1;
 }
 
+.hidden {
+  display: none;
+}
+
+.display-inline-block {
+  display: inline-block;
+}
+
 .notice-wrapper {
   text-align: center;
 }
@@ -86,4 +94,12 @@ body {
 
 .about-image {
   width: 50vw;
+}
+
+select {
+  display: block;
+}
+
+th, td {
+  text-align: center;
 }

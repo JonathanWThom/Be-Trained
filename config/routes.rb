@@ -16,8 +16,16 @@ Rails.application.routes.draw do
     resources :workouts
   end
 
-  resources :about, :only => [:index]
+  resources :athletes, :only => [] do
+    resources :exercises
+    get :cancel, to: "exercises#cancel"
+  end
 
+  resources :exercises, :only => [] do
+    get :hide_history, to: "exercises#hide_history"
+  end
+
+  resources :about, :only => [:index]
 
   post 'coaches/:id/invite', to: 'athletes#invite', as: :invite
 end
