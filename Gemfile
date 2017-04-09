@@ -15,6 +15,8 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'auto_html'
 gem 'jquery-turbolinks'
 gem 'decent_exposure', '3.0.0'
+gem "audited", "~> 4.3"
+gem 'safe_attributes'
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -41,6 +41,8 @@ GEM
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
+    audited (4.4.1)
+      activerecord (>= 4.0, < 5.2)
     auto_html (2.0.0)
       gemoji (~> 2.1)
       redcarpet (~> 3.3)
@@ -194,6 +196,8 @@ GEM
       rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
+    safe_attributes (1.0.10)
+      activerecord (>= 3.0.0)
     safe_yaml (1.0.4)
     sass (3.4.23)
     sass-rails (5.0.6)
@@ -256,6 +260,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  audited (~> 4.3)
   auto_html
   byebug
   capybara
@@ -278,6 +283,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
   rspec-rails
+  safe_attributes
   sass-rails (~> 5.0)
   shoulda-matchers
   simplecov
@@ -292,4 +298,4 @@ DEPENDENCIES
   will_paginate (~> 3.1.0)
 
 BUNDLED WITH
-   1.14.5
+   1.14.6
