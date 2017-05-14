@@ -1,0 +1,2 @@
+$("#<%= @exercise.id %>_history").hide();
+$("#<%= @exercise.id %>_show_link").html("<%= j render 'show_history', exercise: @exercise, athlete: @exercise.athlete %>");

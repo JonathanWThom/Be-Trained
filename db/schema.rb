@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409005749) do
+ActiveRecord::Schema.define(version: 20170514230841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,28 @@ ActiveRecord::Schema.define(version: 20170409005749) do
     t.index ["reset_password_token"], name: "index_athletes_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "audits", force: :cascade do |t|
+    t.integer  "auditable_id"
+    t.string   "auditable_type"
+    t.integer  "associated_id"
+    t.string   "associated_type"
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.string   "username"
+    t.string   "action"
+    t.text     "audited_changes"
+    t.integer  "version",         default: 0
+    t.string   "comment"
+    t.string   "remote_address"
+    t.string   "request_uuid"
+    t.datetime "created_at"
+    t.index ["associated_id", "associated_type"], name: "associated_index", using: :btree
+    t.index ["auditable_id", "auditable_type"], name: "auditable_index", using: :btree
+    t.index ["created_at"], name: "index_audits_on_created_at", using: :btree
+    t.index ["request_uuid"], name: "index_audits_on_request_uuid", using: :btree
+    t.index ["user_id", "user_type"], name: "user_index", using: :btree
+  end
+
   create_table "coaches", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -58,11 +80,13 @@ ActiveRecord::Schema.define(version: 20170409005749) do
   end
 
   create_table "exercises", force: :cascade do |t|
-    t.string  "name"
-    t.integer "record"
-    t.string  "unit"
-    t.date    "date"
-    t.integer "athlete_id"
+    t.string   "name"
+    t.integer  "record"
+    t.string   "unit"
+    t.date     "date"
+    t.integer  "athlete_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|

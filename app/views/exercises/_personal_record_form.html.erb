@@ -1,0 +1,17 @@
+<div class="field">
+  <h3>Add a Personal Record</h3>
+  <%= form_for [athlete, @exercise], remote: true do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true %>
+    <%= f.label :record %>
+    <%= f.number_field :record, required: true %>
+    <%= f.label :unit %>
+    <%= f.select(:unit, options_for_select(Exercise::UNITS), {required: true}) %>
+    <%= f.label :date %>
+    <%= f.date_field :date, required: true, :value => Time.now.strftime('%Y-%m-%d')%>
+    <%= f.submit "Post Record", class: 'btn home-btn' %>
+  <% end %>
+</div>
+  <%= button_to "Cancel", athlete_cancel_path(athlete), class: "btn home-btn", remote: true, method: :get %>
+
+<!-- add cancel button -->
