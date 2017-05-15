@@ -1,9 +1,10 @@
 class AthletesController < ApplicationController
   before_action :authenticate_coach!, :only => [:invite, :update]
   include ApplicationHelper
+  helper_method :sort_column, :sort_direction
   expose :athlete
   expose :coach
-  expose :exercises, ->{ athlete.exercises.order("updated_at DESC") }
+  expose :exercises, ->{ athlete.exercises.order(sort_column + " " + sort_direction) }
 
   def show
     if athlete
@@ -75,5 +76,15 @@ class AthletesController < ApplicationController
         end
       end
     end
+  end
+
+  private
+
+  def sort_column
+    Exercise.column_names.include?(params[:sort]) ? params[:sort] : "date"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
