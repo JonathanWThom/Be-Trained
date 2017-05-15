@@ -9,6 +9,10 @@ class Exercise < ActiveRecord::Base
     "Seconds"
   ]
 
+  def convert_time
+    Time.at(self.record).utc.strftime("%H:%M:%S")
+  end
+
   def fixed_record
     if unit == "Seconds"
       convert_time
@@ -19,10 +23,6 @@ class Exercise < ActiveRecord::Base
 
   def revisions_in_order
     self.revisions.sort! { |a,b| b.date <=> a.date }
-  end
-
-  def convert_time
-    Time.at(self.record).utc.strftime("%H:%M:%S")
   end
 
   def pretty_date
