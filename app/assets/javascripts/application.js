@@ -28,4 +28,9 @@ $(document).on('turbolinks:load', function() {
     $.get(this.action, $(this.serialize(), null, "script"));
     return false;
   });
+
+  $("body").on("click", ".records th a", function(){
+    $.getScript(this.href);
+    return false;
+  });
 });
