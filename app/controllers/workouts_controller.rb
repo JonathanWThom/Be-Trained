@@ -20,7 +20,6 @@ class WorkoutsController < ApplicationController
     else
       @workout = Workout.find(params[:id])
       @link_filter = AutoHtml::Link.new(target: '_blank')
-      ## put below in model?
       @workouts = athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
       @previous = athlete.workouts.previous(@workout.date)
       @next = athlete.workouts.next(@workout.date)
