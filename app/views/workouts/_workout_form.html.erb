@@ -3,9 +3,9 @@
     <h2>New Workout</h2>
     <%= form_for [athlete, @workout], remote: true do |f| %>
       <%= f.label :date %>
-      <%= f.date_field :date %>
+      <%= f.date_field :date, :required => true %>
       <%= f.label :workout %>
-      <%= f.text_area :workout, :class => 'big-field' %>
+      <%= f.text_area :workout, :class => 'big-field', :required => true %>
       <%= f.label :coach_notes %>
       <%= f.text_area :coach_notes, :class => 'medium-field' %>
       <%= f.submit 'Create Workout', :class => 'btn home-btn' %>

@@ -57,7 +57,6 @@ class WorkoutsController < ApplicationController
       redirect_to new_coach_session_path
     else
       @today_workout = Workout.today(athlete)
-
       @workouts = athlete.workouts.paginate(:page => params[:page], :per_page => 7).order(date: :desc)
       @workout = athlete.workouts.new
       @link_filter = AutoHtml::Link.new(target: '_blank')
