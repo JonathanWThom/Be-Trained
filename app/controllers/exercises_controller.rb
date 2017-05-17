@@ -1,6 +1,8 @@
 class ExercisesController < ApplicationController
   expose :athlete
   expose :exercises, ->{ athlete.exercises.order("updated_at DESC") }
+  include ApplicationHelper
+  helper_method :sort_column, :sort_direction
 
   def new
     @exercise = athlete.exercises.new
@@ -14,7 +16,6 @@ class ExercisesController < ApplicationController
     respond_to do |format|
       format.js
     end
-    ## errors?
   end
 
   def edit
@@ -64,5 +65,13 @@ class ExercisesController < ApplicationController
 
   def exercise_params
     params.require(:exercise).permit(:name, :record, :date, :unit)
+  end
+
+  def sort_column
+    Exercise.column_names.include?(params[:sort]) ? params[:sort] : "date"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
