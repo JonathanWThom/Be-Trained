@@ -17,9 +17,10 @@ module ApplicationHelper
     end
   end
 
-  def sortable(column, title = nil)
+  def sortable(column, athlete)
     title ||= column.capitalize
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-    link_to title, :sort => column, :direction => direction
+    link_to title, coach_athlete_path(athlete.coach, athlete, :sort => column, :direction => direction)
   end
+
 end
